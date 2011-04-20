@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>	
+	<entity class="org.opencustomer.db.vo.crm.PersonVO" alias ="e" messageKey="entity.crm.person"/>
+	<join name="e.company" alias="c" type="LEFT_JOIN" messageKey="entity.crm.company"/>
+	<join name="e.addresses" alias="a1" type="LEFT_JOIN" messageKey="entity.crm.address"/>
+	<join name="c.addresses" alias="a2" type="LEFT_JOIN" messageKey="entity.crm.address"/>
+	<restriction hql="(a1.type = 'MAIN' or a1.type is null) and (a2.type = 'MAIN' or a2.type is null)"/>
+	<property name="e.id" messageKey="entity.generic.base.id" sortable="false" id="true">
+	</property>
+	<property name="e.firstName" messageKey="entity.crm.person.firstName" sortable="true" default="2">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.lastName" messageKey="entity.crm.person.lastName" sortable="true" default="1">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.dayOfBirth" messageKey="entity.crm.person.dayOfBirth" sortable="true" default="3">
+		<format type="date" formatKey="default.format.date.date"/>
+		<search type="date" formatKey="default.format.date.date"/>
+	</property>
+	<property name="e.type" messageKey="entity.crm.person.type" sortable="false" default="5">
+		<format type="enum" class="org.opencustomer.db.vo.crm.PersonVO$Type">
+			<value type="BUSINESSMAN" messageKey="entity.crm.person.type.businessman"/>
+			<value type="EMPLOYEE" messageKey="entity.crm.person.type.employee"/>
+			<value type="FREELANCER" messageKey="entity.crm.person.type.freelancer"/>
+			<value type="INDIVIDUAL" messageKey="entity.crm.person.type.individual"/>
+		</format>
+		<search type="enum" class="org.opencustomer.db.vo.crm.PersonVO$Type">
+			<value type="" messageKey="default.select.none" default="true"/>
+			<value type="BUSINESSMAN" messageKey="entity.crm.person.type.businessman"/>
+			<value type="EMPLOYEE" messageKey="entity.crm.person.type.employee"/>
+			<value type="FREELANCER" messageKey="entity.crm.person.type.freelancer"/>
+			<value type="INDIVIDUAL" messageKey="entity.crm.person.type.individual"/>
+		</search>
+	</property>
+	<property name="e.gender" messageKey="entity.crm.person.gender" sortable="false">
+		<format type="enum" class="org.opencustomer.db.vo.crm.PersonVO$Gender">
+			<value type="UNKNOWN" messageKey=""/>
+			<value type="FEMALE" messageKey="entity.crm.person.gender.female"/>
+			<value type="MALE" messageKey="entity.crm.person.gender.male"/>
+		</format>
+		<search type="enum" class="org.opencustomer.db.vo.crm.PersonVO$Gender">
+			<value type="UNKNOWN" messageKey="default.select.none" default="true"/>
+			<value type="FEMALE" messageKey="entity.crm.person.gender.female"/>
+			<value type="MALE" messageKey="entity.crm.person.gender.male"/>
+		</search>
+	</property>
+	<property name="e.email" messageKey="entity.crm.person.email" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.phone" messageKey="entity.crm.person.phone" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.mobile" messageKey="entity.crm.person.mobile" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.fax" messageKey="entity.crm.person.fax" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.url" messageKey="entity.crm.person.url" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.function" messageKey="entity.crm.person.function" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.degree" messageKey="entity.crm.person.degree" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="c.companyName" messageKey="entity.crm.company.companyName" sortable="true" default="4">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="case when a1.id is not null then '1' else case when a2.id is not null then '2' end end" entityMessageKey="entity.crm.address" messageKey="entity.crm.address.type" sortable="true">
+		<format type="string">
+			<value type="1" messageKey="entity.crm.person"/>
+			<value type="2" messageKey="entity.crm.company"/>
+		</format>
+		<search type="text.select" hql="true">
+			<value type="" messageKey="default.select.none" default="true"/>
+			<value type="1" messageKey="entity.crm.person" hql="a1.id is not null"/>
+			<value type="2" messageKey="entity.crm.company" hql="a1.id is null and a2.id is not null"/>
+		</search>
+	</property>
+	<property name="a1.name" altName="a2.name" messageKey="entity.crm.address.name" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="a1.street" altName="a2.street" messageKey="entity.crm.address.street" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="a1.zip" altName="a2.zip" messageKey="entity.crm.address.zip" sortable="true">
+		<search type="text" pattern="{search}*"/>
+	</property>
+	<property name="a1.city" altName="a2.city" messageKey="entity.crm.address.city" sortable="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="(select max(ic.contactTimestamp) from org.opencustomer.db.vo.crm.ContactVO ic inner join ic.personContacts as ipc where ipc.person.id = e.id)" entityMessageKey="entity.crm.contact" messageKey="module.generic.list.lastContactDate" sortable="true">
+		<format type="date" formatKey="default.format.date.datetime"/>
+		<search type="date" formatKey="default.format.date.date"/>
+	</property>
+</configuration>

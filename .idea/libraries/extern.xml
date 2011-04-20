@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="extern">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/extern/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/saaj.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/xmlsec-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/jdring-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/ical4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/jaxrpc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/jaxen-1.1-beta-6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/ldapbp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/james.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/commons-discovery-0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/mailapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/mail-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/resolver.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/axis.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/mailet_1_0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/xercesImpl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/log4j-1.2.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/commons-logging-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/wsdl4j-1.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/axis-ant.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/mysql-connector-java-3.1.12-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/extern/xml-apis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

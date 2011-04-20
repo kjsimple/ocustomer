@@ -1,0 +1,6 @@
+<Context docBase="D:\tools\opencustomer_0.4.0\output\opencustomer">
+
+  <Resource name="jdbc/opencustomer" auth="Container" type="javax.sql.DataSource" maxActive="100"
+            maxIdle="30" maxWait="200" username="opencustomer" password="opencustomer" driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost/opencustomer" />
+</Context>

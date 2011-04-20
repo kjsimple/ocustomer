@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is the OpenCustomer CRM.
+   -
+   - The Initial Developer of the Original Code is
+   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Thomas Bader <thomas.bader@bader-jene.de>
+   -
+   - ***** END LICENSE BLOCK ***** -->
+   
+
+<project name="OpenCustomer" 
+    default="war" 
+    basedir=".">
+	 
+    <!-- build.properties beinhaltet die externen Parameter -->
+    <property file="build.properties" />
+  
+    <property environment="env"/>
+	
+    <property name="project.name"     value="opencustomer" />
+	 
+    <property name="java.dir"         value="java" />
+    <property name="web.dir"          value="web" />
+    <property name="conf.dir"         value="conf" />
+    <property name="lib.dir"          value="lib" />
+    <property name="resources.dir"    value="resources" />
+	
+    <property name="conf.web.dir"     value="${conf.dir}/web" />
+    <property name="conf.tld.dir"     value="${conf.dir}/tld" />
+    <property name="conf.props.dir"   value="${conf.dir}/properties" />
+    <property name="conf.hibernate.dir" value="${conf.dir}/hibernate" />
+	<property name="conf.webdav.dir"	value="${conf.dir}/webdav" />
+	
+    <property name="lib.extern.dir"   value="${lib.dir}/extern" />
+    <property name="lib.struts.dir"   value="${lib.dir}/struts" />
+    <property name="lib.hibernate.dir" value="${lib.dir}/hibernate" />
+	<property name="lib.slide.dir" 		value="${lib.dir}/slide" />
+	
+    <property name="output.dir"       value="output" />
+    <property name="classes.dir"      value="${output.dir}/classes" />
+    <property name="temp.dir"         value="temp" />
+
+    <!-- Erstelle den Classpath -->
+    <path id="project.classpath">
+        <pathelement location="${classes.dir}" />
+        <fileset dir="${lib.extern.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.struts.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.hibernate.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    	<fileset dir="${lib.slide.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+	<!-- Kompilieren des Quellcodes -->
+	<target name="compile" 
+	  	description="Compile the classes"
+	  	depends="init">
+		<javac srcdir="${java.dir}"
+		   	destdir="${classes.dir}"
+		   	debug="${opt.javac.debug}"
+		   	debuglevel="lines,vars,source"
+		   	optimize="${opt.javac.optimize}"
+			source="1.5">
+			<classpath refid="project.classpath" />
+		</javac>
+		
+        <copy todir="${classes.dir}" >
+            <fileset dir="${resources.dir}">  
+                <include name="*.properties"/>
+            </fileset>
+        </copy>
+		
+        <copy todir="${classes.dir}" >
+            <fileset dir="${java.dir}">  
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+            </fileset>
+        	<fileset dir="${conf.webdav.dir}">
+        		<include name="slide.properties" />
+        	</fileset>
+        </copy>
+
+	</target>
+
+	<!-- Initialisiere das System -->
+	<target name="init" description="Initialize the system">
+		<!-- directories building -->
+		<mkdir dir="${output.dir}" />
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+   <target name="war" description="Build war" depends="compile">
+    	<mkdir dir="${temp.dir}"/>
+
+	    <copy todir="${temp.dir}">
+	        <fileset dir="${conf.web.dir}">  
+	            <include name="phoenix.properties"/>
+	        </fileset>
+	    	<fileset dir="${conf.dir}/webservice">
+	    		<include name="server-config.wsdd"/>
+    		</fileset>
+	    	<fileset dir="${conf.dir}/scheduler">
+	    		<include name="events.xml"/>
+    		</fileset>
+	    </copy>
+        <copy todir="${temp.dir}/properties">
+            <fileset dir="${conf.props.dir}">  
+                <include name="*.properties"/>
+                <include name="*.xml"/>
+            </fileset>
+        </copy>
+        <copy todir="${temp.dir}/tld">
+            <fileset dir="${conf.tld.dir}">  
+                <include name="*.tld"/>
+            </fileset>
+        </copy>
+        <copy todir="${temp.dir}/struts-config">
+            <fileset dir="${conf.web.dir}">  
+                <include name="struts-config*.xml"/>
+                <include name="tiles-defs.xml"/>
+            </fileset>
+        </copy>
+        <copy todir="${temp.dir}/lib">
+            <fileset dir="${lib.extern.dir}">  
+                <include name="*"/>
+                <exclude name="servlet*.jar"/>
+                <exclude name="jsp*.jar"/>
+            </fileset>
+            <fileset dir="${lib.struts.dir}">  
+                <include name="*"/>
+            </fileset>
+            <fileset dir="${lib.hibernate.dir}">  
+                <include name="*"/>
+            </fileset>
+        	<fileset dir="${lib.slide.dir}">  
+                <include name="*"/>
+            </fileset>
+        </copy>
+              
+    	<delete file="${output.dir}/${project.name}.war"/>
+        <war warfile="${output.dir}/${project.name}.war" webxml="${conf.web.dir}/web.xml">
+            <fileset dir="${web.dir}"/>
+        	<fileset dir="${conf.webdav.dir}">
+        		<include name="Domain.xml" />
+        	</fileset>
+            <webinf dir="${temp.dir}">
+            	<include name="**/*"/>
+            </webinf>
+            <classes dir="${classes.dir}">	
+                <exclude name="*.bak"/>
+            	<exclude name="org/opencustomer/mail/james/" />
+            </classes>
+        </war>
+     <delete file="${output.dir}/opencustomer" />
+     <unjar dest="${output.dir}/opencustomer" src="${output.dir}/${project.name}.war" />
+        
+    <delete dir="${temp.dir}" failonerror="false"/>
+    </target>
+    
+	<target name="copyjsp" 
+		description="copy jsp to server">
+	
+		<copy todir="${server.root}/webapps/${project.name}/">
+		    <fileset dir="${web.dir}">  
+		        <include name="**/*"/>
+		    </fileset>
+        </copy>
+    </target>
+    
+	<target name="copyclasses" 
+		description="copy classes to server">
+	<!--
+		<taskdef 
+			name="deploy"
+			classname="org.apache.catalina.ant.DeployTask"
+			classpath="${server.root}/server/lib/catalina-ant.jar"/>
+		<taskdef 
+			name="undeploy"
+			classname="org.apache.catalina.ant.UndeployTask"
+			classpath="${server.root}/server/lib/catalina-ant.jar"/>-->
+		
+		
+		<copy todir="${server.root}/webapps/${project.name}/WEB-INF/classes">
+		    <fileset dir="${classes.dir}">  
+		        <include name="**/*"/>
+		    </fileset>
+        </copy>
+    </target>
+	
+	<target name="deploy" 
+		description="copy war to server"
+		depends="war">
+		
+		<delete dir="${server.root}/webapps/${project.name}"/>
+		<delete file="${server.root}/webapps/${project.name}.war"/>
+
+		<copy todir="${server.root}/webapps/">
+		    <fileset dir="${output.dir}">  
+		        <include name="${project.name}.war"/>
+		    </fileset>
+        </copy>
+    </target>	
+	
+	<target name="file" description="Create Download Files">
+		<antcall target="file_oc_bin"/>
+		<antcall target="file_src"/>
+	</target>
+	
+	<target name="file_oc_bin" 
+		description="Create OpenCustomer Binary File"
+		depends="war">
+		
+		<zip destfile="${output.dir}/${project.name}_oc_bin.zip">
+			<fileset dir="${output.dir}">
+				<include name="${project.name}.war"/>
+			</fileset>
+			<fileset dir="database/initial">
+				<include name="create.sql"/>
+				<include name="drop.sql"/>
+				<include name="data.sql"/>
+			</fileset>
+            <fileset dir=".">
+                <include name="license.txt"/>
+            </fileset>
+            <fileset dir=".">
+                <include name="README.txt"/>
+            </fileset>
+		</zip>
+	</target>
+	
+	<target name="file_james_bin" 
+			description="Create James Mailet/Matcher Binary Files">
+			<mkdir dir="${temp.dir}/lib" />
+			<copy todir="${temp.dir}/lib">
+				<fileset dir="${lib.dir}/hibernate">
+	            	<include name="**/*" />
+	            </fileset>
+				<fileset dir="${lib.dir}/struts">
+	            	<include name="commons-lang.jar" />
+	            </fileset>
+				<fileset dir="${lib.dir}/extern">
+	            	<include name="mysql*" />
+					<include name="log3j*" />
+	            </fileset>
+		    </copy>
+			
+			<zip destfile="${output.dir}/${project.name}_james_bin.zip">
+				<fileset dir="${output.dir}">
+					<include name="james2oc.jar"/>
+				</fileset>
+				<fileset dir="${temp.dir}" >
+					<include name="**/*" />
+				</fileset>
+	            <fileset dir=".">
+	                <include name="license.txt"/>
+	            </fileset>
+	            <fileset dir=".">
+	                <include name="README.txt"/>
+	            </fileset>
+			</zip>
+			<delete dir="${temp.dir}" failonerror="false"/>
+		</target>
+	
+	<target name="file_src" 
+		description="Create Source File">
+		
+		<zip destfile="${output.dir}/${project.name}_src.zip">
+			<zipfileset dir="${web.dir}" prefix="${web.dir}">
+				<exclude name="CVS"/>
+			</zipfileset>
+			<zipfileset dir="${java.dir}" prefix="${java.dir}">
+				<exclude name="Test.java"/>
+				<exclude name="CVS"/>
+			</zipfileset>
+			<zipfileset dir="${lib.dir}" prefix="${lib.dir}">
+				<exclude name="CVS"/>
+			</zipfileset>
+			<zipfileset dir="${conf.dir}" prefix="${conf.dir}">
+				<exclude name="CVS"/>
+			</zipfileset>
+			<zipfileset dir="database/initial" prefix="database">
+				<include name="create.sql"/>
+				<include name="drop.sql"/>
+				<include name="data.sql"/>
+				<exclude name="CVS"/>
+			</zipfileset>
+			<zipfileset dir="${resources.dir}" prefix="${resources.dir}">
+				<exclude name="CVS"/>
+			</zipfileset>
+			<fileset dir=".">
+				<include name="build.xml"/>
+				<include name="build.properties"/>
+                <include name="README.txt"/>
+                <include name="license.txt"/>
+				<exclude name="CVS"/>
+			</fileset>
+		</zip>		
+	</target>
+	
+	<!-- James Mailet -->
+	<target name="deploy_mailet" description="Create james2oc.jar Mailet" depends="compile" >
+		<jar jarfile="output/james2oc.jar">
+			<fileset dir="${classes.dir}">
+				<include name="org/opencustomer/application/db/**/*" />
+				<include name="org/opencustomer/db/**/*" />
+				<include name="org/opencustomer/mail/james/**/*" />
+				<include name="log4j.properties" />
+			</fileset>
+			<fileset dir="${conf.dir}/james">
+				<include name="hibernate.cfg.xml" />
+			</fileset>
+		</jar>
+		<delete file="${james.root}/apps/james/SAR-INF/lib/james2oc.jar" />
+		<copy todir="${james.root}/apps/james/SAR-INF/lib">
+			<fileset dir="${output.dir}">
+				<include name="james2oc.jar" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- konfiguriert den Tomcat Server fuer die nutzung von OPenCustomer mit webdav -->
+	<target name="tomcat_configure" description="install tomcat configuration">
+		<copy file="${conf.webdav.dir}/jaas.config" todir="${server.root}/conf/" overwrite="yes"/>
+		<copy file="${lib.extern.dir}/xml-apis.jar" todir="${server.root}/common/endorsed/" overwrite="yes"/>
+		<copy file="${lib.extern.dir}/xercesImpl.jar" todir="${server.root}/common/endorsed/" overwrite="yes"/>
+		<copy file="${lib.extern.dir}/mysql-connector-java-3.1.12-bin.jar" todir="${server.root}/common/endorsed/" overwrite="yes"/>
+	   	
+		<patch originalfile="${server.root}/conf/server.xml" patchfile="${conf.webdav.dir}/server.xml.patch" backups="true" quiet="true" ignorewhitespace="true"/>
+		<patch originalfile="${server.root}/bin/startup.bat" patchfile="${conf.webdav.dir}/startup-jaas.bat.patch" backups="true" quiet="true" ignorewhitespace="true"/>
+		<patch originalfile="${server.root}/bin/catalina.sh" patchfile="${conf.webdav.dir}/catalina.sh.patch" backups="true" quiet="true" ignorewhitespace="true"/>
+	</target>
+	
+	<!-- Webservice AdminTasks -->
+	<taskdef name="axis-admin" classname="org.apache.axis.tools.ant.axis.AdminClientTask">
+		<classpath refid="project.classpath" />
+	</taskdef>
+	
+	<target name="deployservice">
+		<axis-admin
+			port="${server.port}"
+			hostname="${server.host}"
+			failonerror="true"
+			debug="true"
+			xmlfile="${conf.dir}/webservice/DeployService.wsdd"
+			servletpath="${server.path.axis}" />
+	</target>
+	
+	<target name="undeployservice">
+			<axis-admin
+				port="${server.port}"
+				hostname="${server.host}"
+				failonerror="true"
+				debug="true"
+				xmlfile="${conf.dir}/webservice/UndeployService.wsdd"
+				servletpath="${server.path.axis}" 
+				username="admin"
+				password="admin"/>
+		</target>
+</project>
+

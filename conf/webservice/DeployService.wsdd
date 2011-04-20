@@ -1,0 +1,11 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+            xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+  <service name="CalendarService" provider="java:RPC">
+    <parameter name="className" value="org.opencustomer.connector.webservice.CalendarService" />
+    <parameter name="allowedMethods" value="*" />
+  </service>
+  <service name="JobService" provider="java:RPC">
+    <parameter name="className" value="org.opencustomer.connector.webservice.JobService" />
+    <parameter name="allowedMethods" value="*" />
+  </service>
+</deployment>

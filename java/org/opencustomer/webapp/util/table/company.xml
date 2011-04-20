@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>	
+	<entity class="org.opencustomer.db.vo.crm.CompanyVO" alias ="e" messageKey="entity.crm.company"/>
+	<join name="e.addresses" alias="a" type="LEFT_JOIN" messageKey="entity.crm.address"/>
+	<join name="e.companyType" alias="ct" type="LEFT_JOIN" messageKey="entity.crm.companyType"/>
+	<join name="e.companyState" alias="cs" type="LEFT_JOIN" messageKey="entity.crm.companyState"/>
+	<join name="e.sector" alias="se" type="LEFT_JOIN" messageKey="entity.crm.sector"/>
+	<join name="e.category" alias="ca" type="LEFT_JOIN" messageKey="entity.crm.category"/>
+	<join name="e.rating" alias="ra" type="LEFT_JOIN" messageKey="entity.crm.rating"/>
+	<join name="e.contacts" alias="co" type="LEFT_JOIN" messageKey="entity.crm.contact"/>
+	<join name="e.personContacts" alias="pc" type="LEFT_JOIN" messageKey="entity.crm.contact"/>
+	<join name="pc.contact" alias="co2" type="LEFT_JOIN" messageKey="entity.crm.contact"/>
+	<restriction hql="(a.type = 'MAIN' or a.type is null)"/>
+	<property name="e.id" messageKey="entity.generic.base.id" sortable="false" id="true" group="true">
+	</property>
+	<property name="e.companyName" messageKey="entity.crm.company.companyName" sortable="true" default="1" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.email" messageKey="entity.crm.company.email" sortable="true" default="2" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.phone" messageKey="entity.crm.company.phone" sortable="true" default="3" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.fax" messageKey="entity.crm.company.fax" sortable="true" default="4" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="e.url" messageKey="entity.crm.company.url" sortable="true" default="5" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="case when ct.nameKey is null then ct.name else ('{key:'||ct.nameKey||'}') end" entityMessageKey="entity.crm.company" messageKey="entity.crm.companyType" group="true">
+		<search type="list.select" class="org.opencustomer.db.dao.crm.CompanyTypeDAO" all="true" searchProperty="ct.id"/>
+	</property>
+	<property name="case when cs.nameKey is null then cs.name else ('{key:'||cs.nameKey||'}') end" entityMessageKey="entity.crm.company" messageKey="entity.crm.companyState" group="true">
+		<search type="list.select" class="org.opencustomer.db.dao.crm.CompanyStateDAO" all="true" searchProperty="ct.id"/>
+	</property>
+	<property name="case when se.nameKey is null then se.name else ('{key:'||se.nameKey||'}') end" entityMessageKey="entity.crm.company" messageKey="entity.crm.sector" group="true">
+		<search type="list.select" class="org.opencustomer.db.dao.crm.SectorDAO" all="true" searchProperty="ct.id"/>
+	</property>
+	<property name="case when ca.nameKey is null then ca.name else ('{key:'||ca.nameKey||'}') end" entityMessageKey="entity.crm.company" messageKey="entity.crm.category" group="true">
+		<search type="list.select" class="org.opencustomer.db.dao.crm.CategoryDAO" all="true" searchProperty="ct.id"/>
+	</property>
+	<property name="case when ra.nameKey is null then ra.name else ('{key:'||ra.nameKey||'}') end" entityMessageKey="entity.crm.company" messageKey="entity.crm.rating" group="true">
+		<search type="list.select" class="org.opencustomer.db.dao.crm.RatingDAO" all="true" searchProperty="ct.id"/>
+	</property>
+	<property name="a.name" messageKey="entity.crm.address.name" sortable="true" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="a.street" messageKey="entity.crm.address.street" sortable="true" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="a.zip" messageKey="entity.crm.address.zip" sortable="true" group="true">
+		<search type="text" pattern="{search}*"/>
+	</property>
+	<property name="a.city" messageKey="entity.crm.address.city" sortable="true" group="true">
+		<search type="text" pattern="*{search}*"/>
+	</property>
+	<property name="case when max(co.contactTimestamp) is null or max(co.contactTimestamp) &lt; max(co2.contactTimestamp) then max(co2.contactTimestamp)  else max(co.contactTimestamp) end" entityMessageKey="entity.crm.contact" messageKey="module.generic.list.lastContactDate" sortable="true">
+		<format type="date" formatKey="default.format.date.datetime"/>
+		<search type="date" formatKey="default.format.date.date"/>
+	</property>	
+</configuration>

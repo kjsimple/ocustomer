@@ -1,0 +1,11 @@
+--- startup.bat	2004-08-29 02:02:20.000000000 +0200
++++ startup-jaas.bat	2004-10-06 14:52:52.000000000 +0200
+@@ -39,6 +39,7 @@
+ goto setArgs
+ :doneSetArgs
+ 
+-call "%EXECUTABLE%" start %CMD_LINE_ARGS%
++set CATALINA_OPTS=%CATALINA_OPTS% -Djava.security.auth.login.config=%CATALINA_HOME%/conf/jaas.config
++call "%EXECUTABLE%" run %CMD_LINE_ARGS%
+ 
+ :end

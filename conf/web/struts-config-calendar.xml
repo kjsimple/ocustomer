@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is the OpenCustomer CRM.
+   -
+   - The Initial Developer of the Original Code is
+   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Thomas Bader <thomas.bader@bader-jene.de>
+   -
+   - ***** END LICENSE BLOCK ***** -->
+   
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+  <!-- ========== Form Bean Definitions ================================== -->
+  <form-beans>
+    <form-bean name="calendar.showMonth" 
+               type="org.opencustomer.webapp.module.calendar.ShowMonthForm"/>
+  
+  	<!-- ========== event  ========== -->
+    <form-bean name="calendar.event.loadForm" 
+               type="org.opencustomer.webapp.module.calendar.event.LoadForm"/>
+    <form-bean name="calendar.event.pageStandardForm" 
+               type="org.opencustomer.webapp.module.calendar.event.PageStandardForm"/>
+    <form-bean name="calendar.event.pageRecurrenceForm" 
+               type="org.opencustomer.webapp.module.calendar.event.PageRecurrenceForm"/>
+    <form-bean name="calendar.event.pageParticipiantsForm" 
+               type="org.opencustomer.webapp.module.calendar.event.PageParticipiantsForm"/>
+    <form-bean name="calendar.event.pageSystemForm" 
+               type="org.opencustomer.webapp.module.calendar.event.PageSystemForm"/>               
+
+
+	<!-- ========== calendar  ========== -->
+    <form-bean name="calendar.listForm" 
+               type="org.opencustomer.webapp.module.calendar.ListForm"/>
+    <form-bean name="calendar.chooseForm" 
+               type="org.opencustomer.webapp.module.calendar.calendar.ChooseForm"/>
+
+    <form-bean name="calendar.calendar.loadForm" 
+               type="org.opencustomer.webapp.module.calendar.calendar.LoadForm"/>
+
+  </form-beans>
+
+  <!-- ========== Action Mapping Definitions ============================= -->
+  <action-mappings>
+  <!-- not in use
+    <action path="/calendar/list" 
+            type="org.opencustomer.webapp.module.calendar.ListAction" 
+            name="calendar.listForm" 
+            scope="request"
+            input="/module/calendar/list.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>-->
+    <action path="/calendar/choose" 
+            type="org.opencustomer.webapp.module.calendar.calendar.ChooseAction" 
+            name="calendar.chooseForm" 
+            scope="request"
+            input="/module/calendar/calendar/choose.jsp"
+            roles="calendar.calendar.CHOOSE">
+    </action>
+  
+  	<!-- ========== view: month  ========== -->
+    <action path="/calendar/showMonth" 
+            type="org.opencustomer.webapp.module.calendar.ShowMonthAction" 
+            name="calendar.showMonth" 
+            scope="request"
+            input="/module/calendar/showMonth.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+		<forward name="edit" path="/calendar/event/edit.do"/>
+    </action>
+
+    <action path="/calendar/showCalendar" 
+            include="/calendar/showMonth.do"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+    
+    <action path="/calendar/showMainCalendar" 
+            include="/calendar/showMonth.do?main=true"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+    
+    <!-- ========== event  ========== -->
+    <action path="/calendar/event/edit" 
+            type="org.opencustomer.webapp.module.calendar.event.LoadAction" 
+            name="calendar.event.loadForm" 
+            scope="request"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+    <action path="/calendar/event/save" 
+            type="org.opencustomer.webapp.module.calendar.event.SaveAction"
+            roles="calendar.calendar.WRITE">
+		<forward name="jumpUser" path="/system/management/user/edit.do"/>
+		<forward name="jumpPerson" path="/crm/person/edit.do"/>
+    </action>
+    <action path="/calendar/event/delete" 
+            type="org.opencustomer.webapp.module.calendar.event.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="calendar.calendar.WRITE">
+    </action>
+    <action path="/calendar/event/pageStandard" 
+            type="org.opencustomer.webapp.module.calendar.event.PageStandardAction" 
+            name="calendar.event.pageStandardForm" 
+            scope="request"
+            input="/module/calendar/event/pageStandard.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+    <action path="/calendar/event/pageParticipiants" 
+            type="org.opencustomer.webapp.module.calendar.event.PageParticipiantsAction" 
+            name="calendar.event.pageParticipiantsForm" 
+            scope="request"
+            input="/module/calendar/event/pageParticipiants.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+		<forward name="addPerson" path="/calendar/event/addPerson.do"/>
+		<forward name="addUser" path="/calendar/event/addUser.do"/>
+    </action>
+    <action path="/calendar/event/pageRecurrence" 
+            type="org.opencustomer.webapp.module.calendar.event.PageRecurrenceAction" 
+            name="calendar.event.pageRecurrenceForm" 
+            scope="request"
+            input="/module/calendar/event/pageRecurrence.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+    <action path="/calendar/event/pageSystem" 
+            type="org.opencustomer.webapp.module.calendar.event.PageSystemAction" 
+            name="calendar.event.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+        
+    <action path="/calendar/event/addPerson" 
+            type="org.opencustomer.webapp.module.calendar.event.add.AddPersonAction" 
+            name="generic.add.person" 
+            scope="request"
+            input="/module/generic/add/addPerson.jsp"
+            roles="calendar.calendar.WRITE">
+    </action>  	
+            
+    <action path="/calendar/event/addUser" 
+            type="org.opencustomer.webapp.module.calendar.event.add.AddUserAction" 
+            name="generic.add.user" 
+            scope="request"
+            input="/module/generic/add/addUser.jsp"
+            roles="calendar.calendar.WRITE">
+    </action>
+    
+    <!-- ========== calendar  ========== -->
+    <action path="/calendar/edit" 
+            type="org.opencustomer.webapp.module.calendar.calendar.LoadAction" 
+            name="calendar.calendar.loadForm" 
+            scope="request"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+    <action path="/calendar/edit/save" 
+            type="org.opencustomer.webapp.module.calendar.calendar.SaveAction"
+            roles="calendar.calendar.WRITE">
+    </action>
+    <action path="/calendar/edit/pageStandard" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="calendar.calendar.READ,calendar.calendar.WRITE">
+    </action>
+  </action-mappings>
+
+</struts-config>

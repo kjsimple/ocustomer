@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- Generated file - Do not edit! -->
+
+<hibernate-configuration>
+
+	<!-- a SessionFactory instance listed as /jndi/name -->
+	<session-factory>
+
+		<!-- properties -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">false</property>
+		<property name="format_sql">true</property>
+		<property name="use_outer_join">false</property>
+	
+  		<property name="connection.datasource">java:/comp/env/jdbc/opencustomer</property>
+	    <!-- 
+		<property name="connection.username">opencustomer</property>
+		<property name="connection.password">opencustomer</property>
+		<property name="connection.driver_class">org.gjt.mm.mysql.Driver</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/opencustomer?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		-->
+
+  		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		
+		<property name="hibernate.c3p0.min_size">3</property>
+		<property name="hibernate.c3p0.max_size">25</property>
+		<property name="hibernate.c3p0.timeout">1800</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+
+		<!-- mapping files -->
+		 
+		<mapping class="org.opencustomer.db.vo.system.RightAreaVO"/>
+		<mapping class="org.opencustomer.db.vo.system.RightGroupVO"/>
+		<mapping class="org.opencustomer.db.vo.system.RightVO"/>
+		<mapping class="org.opencustomer.db.vo.system.RoleVO"/>
+		<mapping class="org.opencustomer.db.vo.system.UsergroupVO"/>
+		<mapping class="org.opencustomer.db.vo.system.UserVO"/>
+		<mapping class="org.opencustomer.db.vo.system.ProfileVO"/>
+		<mapping class="org.opencustomer.db.vo.system.LdapGroupVO"/>
+		<mapping class="org.opencustomer.db.vo.system.UserLoginLogVO"/>
+		<mapping class="org.opencustomer.db.vo.system.ConfigurationVO"/>
+		<mapping class="org.opencustomer.db.vo.system.ListConfigurationVO"/>
+		
+		<mapping class="org.opencustomer.db.vo.calendar.CalendarVO"/>
+		<mapping class="org.opencustomer.db.vo.calendar.EventVO"/>
+		<mapping class="org.opencustomer.db.vo.calendar.EventCalendarVO"/>
+		<mapping class="org.opencustomer.db.vo.calendar.EventPersonVO"/>
+						
+		<mapping class="org.opencustomer.db.vo.crm.AddressVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.JobVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.CompanyVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.PersonVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.PersonContactVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.ContactVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.SectorVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.CompanyStateVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.CompanyTypeVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.LegalFormVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.LegalFormGroupVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.RatingVO"/>
+		<mapping class="org.opencustomer.db.vo.crm.CategoryVO"/>
+
+		<event type="flush-entity">
+            <listener class="org.opencustomer.framework.db.hibernate.IgnoreDirtyPropertiesListener"/>
+        </event>
+        <event type="save">
+            <listener class="org.opencustomer.db.listener.InsertOrUpdateListener"/>
+            <listener class="org.opencustomer.db.listener.HibernateLdapListener"/>
+            <listener class="org.opencustomer.db.listener.ReminderMailListener"/>
+        </event>
+        <event type="update">
+            <listener class="org.opencustomer.db.listener.InsertOrUpdateListener"/>
+            <listener class="org.opencustomer.db.listener.HibernateLdapListener"/>
+            <listener class="org.opencustomer.db.listener.ReminderMailListener"/>
+        </event>
+        <event type="save-update">
+            <listener class="org.opencustomer.db.listener.InsertOrUpdateListener"/>
+            <listener class="org.opencustomer.db.listener.HibernateLdapListener"/>
+            <listener class="org.opencustomer.db.listener.ReminderMailListener"/>
+        </event>
+        <event type="delete">
+        	<listener class="org.opencustomer.db.listener.HibernateLdapListener"/>
+        	<listener class="org.hibernate.event.def.DefaultDeleteEventListener"/>
+        	<listener class="org.opencustomer.db.listener.ReminderMailListener"/>
+        </event>
+
+	</session-factory>
+
+</hibernate-configuration>

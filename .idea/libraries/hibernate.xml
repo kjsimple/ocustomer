@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="hibernate">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/asm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/cglib-2.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/ehcache-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/antlr-2.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/hibernate-annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/commons-collections-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/asm-attrs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/c3p0-0.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/jta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/commons-logging-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/hibernate3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate/ejb3-persistence.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

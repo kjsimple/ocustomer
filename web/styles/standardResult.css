@@ -1,0 +1,309 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is the OpenCustomer CRM.
+ *
+ * The Initial Developer of the Original Code is
+ * Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+ * Portions created by the Initial Developer are Copyright (C) 2005
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Thomas Bader <thomas.bader@bader-jene.de>
+ *
+ * ***** END LICENSE BLOCK ***** */
+ 
+
+/* ********** Ergebniszeilen ********** */
+
+table.result td
+{
+	vertical-align: top;
+	padding-right: 3px;
+	padding-left: 3px;
+}
+
+table.result tr.row td
+{
+	border: 1px solid #4C6E7C;
+}
+
+table.result tr.rowOdd td
+{
+	border: 1px solid #4C6E7C;
+}
+
+table.result tr.rowEven td
+{
+	border: 1px solid #4C6E7C;
+}
+
+table.result tr.jobPast td {
+	background-color: #FFC8C8;
+}
+
+table.result tr.rowActive td
+{
+	border: 1px solid #4C6E7C;
+	background-color: #BACED6;
+	cursor: pointer;
+}
+
+table.result tr.red td
+{
+	color: red;
+}
+
+table.result td.action, table.result th.action
+{
+	text-align: right;
+	white-space: nowrap;
+}
+
+table.result tr.noRow td
+{
+	border: 1px solid #4C6E7C;
+	text-align: center;
+}
+
+table.result tr.jobHigh td {
+	color: #FF0000;
+}
+
+table.result tr.jobLow td {
+	color: #0000FF; /*#4C6E7C;*/
+}
+
+table.lightResult
+{
+	width: 100%;
+}
+
+table.lightResult th
+{
+	border: none;
+	background-color: transparent;
+	padding: 5px 5px 15px 5px;
+}
+
+table.lightResult td
+{
+	border: none;
+	border-top: 1px dotted #4C6E7C;
+	border-bottom: 1px dotted #4C6E7C;
+	padding: 5px;
+}
+	
+/* ***************************************************** */
+/* ******************** list tables ******************** */
+/* ***************************************************** */
+
+form.list
+{
+	width: 100%;
+}
+
+
+form.list fieldset
+{
+	margin: 0px 5px 10px 5px;
+	padding: 10px;
+	border: 1px solid #4C6E7C;
+	-moz-border-radius:10px;
+}
+
+form.list fieldset.listAction
+{
+	text-align: right;
+	margin: 20px 5px 0px 5px;
+	border: none;
+	padding: 0px;
+}
+
+/* ********** Suche ********** */
+
+fieldset.search table.search
+{
+	width: 100%;
+}
+
+table.search td
+{
+	background-color: #ECF2F4;
+	border: 1px solid #4C6E7C;
+	font-weight: bold;
+	padding-left: 2px;
+	padding-right: 6px;
+}
+
+table.search td input
+{
+	font-weight: normal;
+	width: 98%;
+}
+
+table.search td input.half
+{
+	font-weight: normal;
+	width: 49%;
+}
+
+table.search td select
+{
+	font-weight:  normal;
+	width: 100%;
+}
+
+table.search table.inner {
+	width: 100%;
+}
+
+table.search table.inner td {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	white-space: nowrap;
+}
+
+
+table.search table.double
+{
+	width: 100%;
+	border: none;
+}
+
+table.search table.double td
+{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+}
+
+table.search table.double td.divider
+{
+	padding-left: 6px;
+	padding-right: 2px;
+}
+
+fieldset div.action
+{
+	text-align: right;
+	margin-top: 5px;
+}
+
+fieldset div.action input
+{
+	margin-left: 5px;
+}
+
+fieldset div.action input.default
+{
+	display: none;
+}
+
+
+fieldset.list table.result
+{
+	width: 100%;
+}
+
+/* ********** Sortierung ********** */
+
+table.sort
+{
+	width: 100%;
+}
+
+table.sort td:first-child
+{
+	border-style: none;
+	vertical-align: middle;
+	text-align: left;
+	font-weight: bold;
+}
+table.sort td
+{
+	vertical-align: middle;
+	text-align: right;
+	white-space:nowrap;
+}
+
+table.sort button {
+	background-color: transparent;
+	border: none;
+	background-repeat: no-repeat;
+	padding: 0px;
+	width: 16px;
+	height: 16px;
+}
+
+table.sort button span {
+	display: none;
+}
+table.sort button.desc {
+	background-image: url("../images/icon/up_green.gif");
+}	
+
+table.sort button.asc {
+	background-image: url("../images/icon/down_green.gif");
+}	
+
+/* ********** Die Blätter-Funktion ********** */
+
+div.pagination
+{
+	text-align: right;
+	margin-top: -5px;
+	margin-bottom: 5px;
+}
+
+div.pagination input {
+		width: 25px;
+}
+
+div.pagination input, div.pagination select
+{
+	margin-left: 5px;
+	padding: 0px 0px 0px 0px;
+	border: none;
+	background-color: #FFFFFF;
+	border: 1px dotted #4C6E7C;
+}
+
+div.pagination input[disabled="disabled"]
+{
+	/* better style for simpleType
+	background-color: #ECF2F4;
+	*/
+	color: #BACED6;
+	border-color: #BACED6;
+}
+
+/* ********** Ergebnisliste ********** */
+
+table.result th
+{
+	background-color: #ECF2F4;
+	border: 1px solid #4C6E7C;
+	vertical-align: middle;
+	padding-right: 3px;
+	padding-left: 3px;
+	white-space: nowrap;
+	font-weight: bold;
+}
+
+table.result span.company
+{
+	font-style: italic;
+	font-weight: bold;
+}

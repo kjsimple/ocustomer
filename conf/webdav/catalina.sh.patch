@@ -1,0 +1,11 @@
+--- catalina_alt.sh	2006-04-14 20:09:44.000000000 +0200
++++ catalina.sh	2006-06-22 14:06:24.421875000 +0200
+@@ -71,6 +71,8 @@
+ # Only set CATALINA_HOME if not already set
+ [ -z "$CATALINA_HOME" ] && CATALINA_HOME=`cd "$PRGDIR/.." ; pwd`
+ 
++export CATALINA_OPTS="${CATALINA_OPTS} -Djava.security.auth.login.config=${CATALINA_HOME}/conf/jaas.config"
++
+ if [ -r "$CATALINA_HOME"/bin/setenv.sh ]; then
+   . "$CATALINA_HOME"/bin/setenv.sh
+ fi

@@ -1,0 +1,18 @@
+<events>
+	<!-- <event type="CRON" name="test1" class="org.opencustomer.connector.scheduling.jobs.TestJob">
+	</event> -->
+	<event type="CRON" name="Daily status mail" class="org.opencustomer.connector.scheduling.jobs.StatusMailJob">
+		<hour>7</hour>
+		<minute>0</minute>
+	</event>
+	<event type="CRON" name="load daily mail jobs" class="org.opencustomer.connector.scheduling.jobs.LoadDailyMailJobs">
+		<hour>23</hour>
+		<minute>55</minute>
+	</event>
+	<event type="CRON" name="sync with ldap" class="org.opencustomer.connector.scheduling.jobs.LdapSyncJob">
+	    <minute>0</minute>
+		<minute>15</minute>
+		<minute>30</minute>
+		<minute>45</minute>
+	</event>
+</events>

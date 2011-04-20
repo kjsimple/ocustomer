@@ -1,0 +1,32 @@
+<component name="libraryTable">
+  <library name="slide">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/slide/jakarta-slide-webdavlib-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/commons-codec-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/commons-httpclient.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/tm-extractors-0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/lucene-1.4-final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/commons-pool-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/commons-transaction-1.1.1pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/jaxen-jdom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/poi-2.5-final-20040428.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/db-ojb-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/saxpath.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-log4jlogger-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/geronimo-jta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-webdavservlet-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/jaxen-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-stores-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-kernel-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/commons-dbcp-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-jaas-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/jakarta-slide-wck-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/commons-xmlio-0.1pre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/jdom-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-jdk14logger-2.2pre1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slide/slide-roles-2.2pre1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

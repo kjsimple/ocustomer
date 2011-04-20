@@ -1,0 +1,329 @@
+@import "standardBase.css";
+@import "standardForm.css";
+@import "standardResult.css";
+@import "standardCalendar.css";
+@import "standardJsCalendar.css";
+
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is the OpenCustomer CRM.
+ *
+ * The Initial Developer of the Original Code is
+ * Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+ * Portions created by the Initial Developer are Copyright (C) 2005
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Thomas Bader <thomas.bader@bader-jene.de>
+ *
+ * ***** END LICENSE BLOCK ***** */
+ 
+/* ************************* Allgemein ************************* */
+
+body
+{
+	min-width: 400px;
+}
+
+#error
+{
+ 	font-weight: bold;
+ 	color: red;
+}
+/* 
+#error + input
+{
+ 	border: 1px solid #FF0000;
+}
+*/ 
+
+div.errors
+{
+	border: 1px solid red;
+	padding: 2px 5px 2px 5px;
+	margin-bottom: 10px;
+	margin-left: 3px;
+}
+
+/* ************************* Login ************************* */
+#start
+{
+	text-align: center;
+}
+
+fieldset.login
+{
+	margin: 0px 10px 10px 10px;
+	border: none;
+}
+
+fieldset.login table
+{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+	
+fieldset.login td
+{
+	padding: 5px 0px 0px 5px;
+}
+
+fieldset.login input
+{
+	width: 100%;
+	margin: 0px;
+}
+
+
+fieldset.login label
+{
+	font-weight: bold;
+}
+
+.loginError
+{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.loginError td
+{
+	padding: 5px;
+	text-align: center;
+}
+
+/* ************************* Navigation ************************* */
+
+.navigation
+{
+	margin: 5px 5px 5px 130px;
+	height: 50px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.navigation .button
+{
+	margin: 9px 0px 0px 20px;
+}
+
+.navigation .buttonLogout	
+{
+	margin: 9px 20px 0px 52px;
+}
+
+div.block
+{
+	vertical-align: top;
+	border-right: 1px solid #4C6E7C;
+	border-bottom: 1px solid #4C6E7C;
+	border-top: 1px solid #4C6E7C;
+	background-color: #ECF2F4;
+	margin-bottom: 10px;
+	-moz-border-radius-topRight:10px;
+	-moz-border-radius-bottomRight:10px;
+}
+
+div.block div
+{
+	padding: 5px 5px 5px 10px;
+}
+
+div.block h2, div.block .head
+{
+	border-bottom: 1px solid #4C6E7C;
+	margin: 0px 0px 3px 0px;
+	padding: 5px 5px 5px 10px;
+	font-weight: bold;
+	font-size: 11px;
+	background-color: #BACED6;
+	-moz-border-radius-topRight:10px;
+}
+
+div.block h2.inner
+{
+	border-top: 1px solid #4C6E7C;
+	border-bottom: 1px solid #4C6E7C;
+	margin: 5px 0px 3px 0px;
+	-moz-border-radius-topRight:0px;
+}
+
+div.block ul
+{
+	margin: 0px 0px 0px 0px;
+	padding: 5px 5px 5px 10px;
+	list-style-type: none;
+}
+
+div.block li
+{
+	margin-bottom: 3px;
+}
+
+div.block li a
+{
+	width: 100px;
+	text-decoration: none;
+	display: block;
+	border-top: 1px dotted #ECF2F4;
+	border-bottom: 1px dotted #ECF2F4;
+}
+
+div.block li a:hover
+{
+	color: #000000;
+	border-top: 1px dotted #4C6E7C;
+	border-bottom: 1px dotted #4C6E7C;
+}
+
+
+/* ************************* Content ************************* */
+.content
+{
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 30px 10px; /* top right bottom left */
+	position: absolute;
+	top: 60px;
+	left: 120px;
+	right: 20px;
+	min-width: 670px;
+	z-index: 50;
+}
+	
+input.action
+{
+	margin-left: 20px;
+}
+
+.pageTitle
+{
+	font-size: 15px;
+	color: #4C6E7C;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 25px;
+	/*background-color: #BACED6;	
+	border: 1px solid #4C6E7C;
+	-moz-border-radius:10px;*/
+}
+
+.pageTitle h3
+{
+	font-size: 15px;
+	font-weight : bold;
+	padding: 5px 5px 5px 5px;
+	margin: 0px;
+	float: left;
+}
+.pageTitle .navigation3
+{
+	float: right;
+	padding: 5px 5px 5px 5px;
+	display: inline;
+}
+
+.pageTitle a
+{
+	color: #4C6E7C;
+	margin-left: 10px;
+	text-decoration: none;
+	border-top: 1px dotted #4C6E7C;
+	border-bottom: 1px dotted #4C6E7C;
+}
+
+.pageTitle a:hover
+{
+	color: #000000;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+/* ************************* Top ************************* */
+
+div.top
+{
+	text-align: left;
+	vertical-align: middle;
+    background-color: #ECF2F4;
+    height: 60px;
+    border: 1px solid #ECF2F4;
+    position: fixed;
+    right: 20px;
+    left: 0px;
+    -moz-border-radius-bottomRight: 10px;
+    border-right: 1px solid #4C6E7C;
+	border-bottom: 1px solid #4C6E7C;
+	background-position: 10px center;
+	background-repeat: no-repeat;
+	min-width: 800px;
+	z-index: 100;
+}
+
+div.leftHand
+{
+	width: 120px;
+	position: fixed;
+	top: 70px;
+	z-index: 100;	
+}
+
+div.bottom
+{
+	text-align: left;
+	vertical-align: middle;
+    background-color: #ECF2F4;
+    height: 20px;
+    border: 1px solid #ECF2F4;
+    position: fixed;
+    right: 20px;
+    bottom: -1px;
+    left: 0px;
+    -moz-border-radius-topRight: 10px;
+    border-right: 1px solid #4C6E7C;
+	border-top: 1px solid #4C6E7C;
+	border-bottom: 1px solid #4C6E7C;
+	min-width: 800px;
+	z-index: 100;
+}
+
+div.bottom .copyright
+{
+	float: right;
+	margin: 5px 10px 5px 10px;
+}
+
+div.bottom .version
+{
+	float: left;
+	margin: 5px 10px 5px 10px;
+}
+	
+a.text
+{	
+	color: #25373F;
+	text-decoration: none;
+	border-top: 1px dotted #ECF2F4;
+	border-bottom: 1px dotted #ECF2F4;
+}
+
+a.text:hover
+{
+	color: #000000;
+	border-top: 1px dotted #4C6E7C;
+	border-bottom: 1px dotted #4C6E7C;
+}

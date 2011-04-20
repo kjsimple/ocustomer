@@ -1,0 +1,181 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is the OpenCustomer CRM.
+ *
+ * The Initial Developer of the Original Code is
+ * Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+ * Portions created by the Initial Developer are Copyright (C) 2005
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Thomas Bader <thomas.bader@bader-jene.de>
+ *
+ * ***** END LICENSE BLOCK ***** */
+ 
+/* ************************* Calendar Declaration ************************* */
+
+fieldset.calendarMonth
+{
+	margin: 0px 5px 10px 5px;
+	padding: 10px;
+	border: 1px solid #4C6E7C;
+	-moz-border-radius:10px;	
+}	
+
+/* ********** calendar navigation ********** */
+
+fieldset.calendarMonth table.navigation
+{
+	width: 100%;
+	margin: 0px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	height: auto;
+}
+
+fieldset.calendarMonth table.navigation td
+{
+	border: none;
+	vertical-align: middle;
+	font-size: 15px;
+	font-weight: bold;
+	height: auto;
+}
+
+fieldset.calendarMonth table.navigation td.left
+{
+	text-align: left;
+}	
+
+fieldset.calendarMonth table.navigation td.center
+{
+	text-align: center;
+}
+
+fieldset.calendarMonth table.navigation td.right
+{
+	text-align: right;
+}	
+
+/* ********** ********** */
+
+table.calendarMonth
+{
+	width: 100%;
+}
+
+table.calendarMonth th
+{
+	border: 1px solid #4C6E7C;
+}
+
+table.calendarMonth th.day
+{
+	height: 25px;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	background-color: #ECF2F4;
+}	
+
+table.calendarMonth th.week
+{
+	height: 100px;
+	vertical-align: top;
+	text-align: left;
+	font-weight: normal;
+	background-color: #ECF2F4;
+}	
+
+table.calendarMonth td
+{
+	border: 1px solid #4C6E7C;
+	height: 100px;
+	vertical-align: top;
+}
+
+table.calendarMonth td.anotherMonth
+{
+	background-color: #ECF2F4;
+}
+
+table.calendarMonth #today
+{
+	font-weight: bold;
+	background-color: #FFFFF0;
+}
+
+table.calendarMonth div.day
+{
+	font-size: 15px;
+	text-align: right;
+}
+
+table.calendarMonth div.day
+{
+	font-size: 12px;
+	text-align: right;
+}
+
+table.calendarMonth div.day a
+{
+	color: #25373F;
+	text-decoration: none;
+	border-top: 1px dotted #ECF2F4;
+	border-bottom: 1px dotted #ECF2F4;
+}
+
+table.calendarMonth div.day a:hover
+{
+	color: red;
+}
+
+div.event, div.eventActive, div.eventNotReadable
+{
+	text-align: left;
+	border: 1px solid #4C6E7C;
+	margin: 2px;
+	padding: 2px;
+}
+
+div.eventActive
+{
+	background-color: #BACED6;
+}
+
+div.eventNotReadable {
+	background-color: #FFC8C8;
+}
+
+div.event div.time, div.eventActive div.time
+{
+	font-weight: bold;
+}
+
+div.time table {
+	width: 100%;
+	border: none;
+}
+
+div.time table td{
+	height: auto;
+	border: none;
+}
+
+div.time table td.icons{
+	text-align: right;
+}
+
+div.event div.title, div.eventActive div.title
+{
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu>
+	<menuitem imageKey="navigation.home.url" altKey="navigation.home.text" titleKey="navigation.home.text" messageKey="navigation.home.text">
+		<menuitem action="/home/jobs" messageKey="navigation.home.jobs" titleKey="navigation.home.jobs"/>
+	</menuitem>
+	<menuitem imageKey="navigation.crm.url" altKey="navigation.crm.text" titleKey="navigation.crm.text" messageKey="navigation.crm.text">
+		<menuitem action="/crm/company" messageKey="navigation.crm.company" titleKey="navigation.crm.company"/>
+		<menuitem action="/crm/person" messageKey="navigation.crm.person" titleKey="navigation.crm.person"/>
+	</menuitem>
+	<menuitem imageKey="navigation.calendar.url" altKey="navigation.calendar.text" titleKey="navigation.calendar.text" messageKey="navigation.calendar.text">
+		<menuitem action="/calendar/showMainCalendar" messageKey="navigation.calendar.private" titleKey="navigation.calendar.private"/>
+		<menuitem action="/calendar/choose" messageKey="navigation.calendar.choose" titleKey="navigation.calendar.choose"/>
+	</menuitem>
+	<menuitem imageKey="navigation.system.url" altKey="navigation.system.text" titleKey="navigation.system.text" messageKey="navigation.system.text">
+		<menuitem action="/system/profile" messageKey="navigation.system.profile" titleKey="navigation.system.profile"/>
+		<menuitem messageKey="navigation.system.userManagement" titleKey="navigation.system.userManagement">
+			<menuitem action="/system/management/user" messageKey="navigation.system.userManagement.user" titleKey="navigation.system.userManagement.user"/>
+			<menuitem action="/system/management/role" messageKey="navigation.system.userManagement.role" titleKey="navigation.system.userManagement.role"/>
+			<menuitem action="/system/management/usergroup" messageKey="navigation.system.userManagement.usergroup" titleKey="navigation.system.userManagement.usergroup"/>
+		</menuitem>
+		<menuitem messageKey="navigation.system.settings" titleKey="navigation.system.settings">
+			<menuitem action="/system/settings/configuration/edit" messageKey="navigation.system.settings.configuration" titleKey="navigation.system.settings.configuration"/>
+		</menuitem>
+		<menuitem action="/system/sessions" messageKey="navigation.system.sessions" titleKey="navigation.system.sessions"/>
+	</menuitem>
+</menu>

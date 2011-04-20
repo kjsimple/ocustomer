@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is the OpenCustomer CRM.
+   -
+   - The Initial Developer of the Original Code is
+   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Portions created by the Initial Developer are Copyright (C) 2006
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Thomas Bader <thomas.bader@bader-jene.de>
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+  <!-- ========== Form Bean Definitions ================================== -->
+  <form-beans>
+
+  	<!-- ========== profile  ========== -->
+    <form-bean name="system.profile.loadForm" 
+               type="org.opencustomer.webapp.module.system.profile.LoadForm"/>
+    <form-bean name="system.profile.pageStandardForm" 
+               type="org.opencustomer.webapp.module.system.profile.PageStandardForm"/>
+
+  	<!-- ========== sessions  ========== -->
+    <form-bean name="system.sessions.listForm" 
+               type="org.opencustomer.webapp.module.system.sessions.ListForm"/>
+
+	<!-- ========== user  ========== -->
+    <form-bean name="system.management.user.listForm" 
+               type="org.opencustomer.webapp.module.system.management.user.ListForm"/>
+    <form-bean name="system.management.user.loadForm" 
+               type="org.opencustomer.webapp.module.system.management.user.LoadForm"/>
+    <form-bean name="system.management.user.pageStandardForm" 
+               type="org.opencustomer.webapp.module.system.management.user.PageStandardForm"/>
+    <form-bean name="system.management.user.addRoleForm" 
+               type="org.opencustomer.webapp.module.system.management.user.add.AddRoleForm"/> 
+               
+	<!-- ========== role  ========== -->
+    <form-bean name="system.management.role.listForm" 
+               type="org.opencustomer.webapp.module.system.management.role.ListForm"/>
+
+    <form-bean name="system.management.role.loadForm" 
+               type="org.opencustomer.webapp.module.system.management.role.LoadForm"/>
+    <form-bean name="system.management.role.pageStandardForm" 
+               type="org.opencustomer.webapp.module.system.management.role.PageStandardForm"/>
+    <form-bean name="system.management.role.pageRightsForm" 
+               type="org.opencustomer.webapp.module.system.management.role.PageRightsForm"/>
+
+	<!-- ========== usergroup ========== -->
+    <form-bean name="system.management.usergroup.listForm" 
+               type="org.opencustomer.webapp.module.system.management.usergroup.ListForm"/>
+
+    <form-bean name="system.management.usergroup.loadForm" 
+               type="org.opencustomer.webapp.module.system.management.usergroup.LoadForm"/>
+    <form-bean name="system.management.usergroup.pageStandardForm" 
+               type="org.opencustomer.webapp.module.system.management.usergroup.PageStandardForm"/>
+
+	<!-- ========== configuration  ========== -->
+    <form-bean name="system.settings.configuration.loadForm" 
+               type="org.opencustomer.webapp.module.system.settings.configuration.LoadForm"/>
+    <form-bean name="system.settings.configuration.pageStandardForm" 
+               type="org.opencustomer.webapp.module.system.settings.configuration.PageStandardForm"/>
+    <form-bean name="system.settings.configuration.pageLdapForm" 
+               type="org.opencustomer.webapp.module.system.settings.configuration.PageLdapForm"/>
+
+	<!-- ========== list ========== -->
+    <form-bean name="system.settings.list.listForm" 
+               type="org.opencustomer.webapp.module.system.settings.list.ListForm"/>
+               
+	<form-bean name="system.settings.list.loadForm" 
+               type="org.opencustomer.webapp.module.system.settings.list.LoadForm"/>
+    <form-bean name="system.settings.list.pageStandardForm" 
+               type="org.opencustomer.webapp.module.system.settings.list.PageStandardForm"/>
+    <form-bean name="system.settings.list.pageColumnsForm" 
+               type="org.opencustomer.webapp.module.system.settings.list.PageColumnsForm"/>
+
+  </form-beans>
+  
+  <!-- ========== Global Forward Definitions ============================= -->
+  <global-forwards>
+  
+  </global-forwards>
+    
+  <!-- ========== Action Mapping Definitions ============================= -->
+  <action-mappings>
+  
+  	<!-- ========== profile ========== -->
+  	<action path="/system/profile" 
+            type="org.opencustomer.webapp.module.system.profile.LoadAction" 
+            name="system.profile.loadForm" 
+            scope="request"
+            roles="administration.userProfile.READ,administration.userProfile.WRITE">
+    </action>
+    <action path="/system/profile/save" 
+            type="org.opencustomer.webapp.module.system.profile.SaveAction"
+            roles="administration.userProfile.READ,administration.userProfile.WRITE">
+    </action>
+    <action path="/system/profile/pageStandard" 
+            type="org.opencustomer.webapp.module.system.profile.PageStandardAction" 
+            name="system.profile.pageStandardForm" 
+            scope="request"
+            input="/module/system/profile/pageStandard.jsp"
+            roles="administration.userProfile.READ,administration.userProfile.WRITE">
+    </action>
+
+   	<!-- ========== sessions ========== -->
+	<action path="/system/sessions" 
+            type="org.opencustomer.webapp.module.system.sessions.ListAction" 
+            name="system.sessions.listForm" 
+            scope="request"
+            input="/module/system/sessions/list.jsp"
+            roles="administration.userManagement.SESSION_MONITOR">
+    </action>
+
+   	<!-- ========== user ========== -->
+    <action path="/system/management/user" 
+            type="org.opencustomer.webapp.module.system.management.user.ListAction" 
+            name="system.management.user.listForm" 
+            scope="request"
+            input="/module/system/management/user/list.jsp"
+            roles="administration.userManagement.READ,administration.userManagement.WRITE">
+    </action>
+    
+    <action path="/system/management/user/edit" 
+            type="org.opencustomer.webapp.module.system.management.user.LoadAction" 
+            name="system.management.user.loadForm" 
+            scope="request"
+            roles="administration.userManagement.READ,administration.userManagement.WRITE">
+    </action>
+    <action path="/system/management/user/save" 
+            type="org.opencustomer.webapp.module.system.management.user.SaveAction"
+            roles="administration.userManagement.READ,administration.userManagement.WRITE">
+		<forward name="jumpRole" path="/system/management/role/edit.do"/>
+		<forward name="jumpUsergroup" path="/system/management/usergroup/edit.do"/>
+    </action>
+    <action path="/system/management/user/delete" 
+            type="org.opencustomer.webapp.module.system.management.user.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="administration.userManagement.WRITE">
+    </action>
+    <action path="/system/management/user/pageStandard" 
+            type="org.opencustomer.webapp.module.system.management.user.PageStandardAction" 
+            name="system.management.user.pageStandardForm" 
+            scope="request"
+            input="/module/system/management/user/pageStandard.jsp"
+            roles="administration.userManagement.READ,administration.userManagement.WRITE">
+		<forward name="addPerson" path="/system/management/user/addPerson.do"/>
+		<forward name="addUsergroup" path="/system/management/user/addUsergroup.do"/>
+		<forward name="addRole" path="/system/management/user/addRole.do"/>
+    </action>
+    <action path="/system/management/user/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="administration.userManagement.READ,administration.userManagement.WRITE">
+    </action>
+
+	<action path="/system/management/user/addRole" 
+            type="org.opencustomer.webapp.module.system.management.user.add.AddRoleAction" 
+            name="system.management.user.addRoleForm" 
+            scope="request"
+            input="/module/system/management/user/add/addRole.jsp"
+            roles="administration.userManagement.WRITE">
+    </action>
+    
+    <action path="/system/management/user/addUsergroup" 
+            type="org.opencustomer.webapp.module.system.management.user.add.AddUsergroupAction" 
+            name="generic.add.usergroup" 
+            scope="request"
+            input="/module/generic/add/addUsergroup.jsp"
+            roles="administration.userManagement.WRITE">
+    </action>
+ 
+    <action path="/system/management/user/addPerson" 
+            type="org.opencustomer.webapp.module.system.management.user.add.AddPersonAction" 
+            name="generic.add.person" 
+            scope="request"
+            input="/module/generic/add/addPerson.jsp"
+            roles="administration.userManagement.WRITE">
+    </action>
+  	
+  	<!-- ========== role ========== -->
+    <action path="/system/management/role" 
+            type="org.opencustomer.webapp.module.system.management.role.ListAction" 
+            name="system.management.role.listForm" 
+            scope="request"
+            input="/module/system/management/role/list.jsp"
+            roles="administration.role.READ">
+    </action>
+    
+	<action path="/system/management/role/edit" 
+            type="org.opencustomer.webapp.module.system.management.role.LoadAction" 
+            name="system.management.role.loadForm" 
+            scope="request"
+            roles="administration.role.READ">
+    </action>
+    <action path="/system/management/role/save" 
+            type="org.opencustomer.webapp.module.system.management.role.SaveAction"
+            roles="administration.role.READ,administration.role.WRITE">
+        <forward name="jumpUser" path="/system/management/user/edit.do"/>
+		<forward name="jumpUsergroup" path="/system/management/usergroup/edit.do"/>
+    </action>
+    <action path="/system/management/role/delete" 
+            type="org.opencustomer.webapp.module.system.management.role.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="administration.role.WRITE">
+    </action>
+    <action path="/system/management/role/pageStandard" 
+            type="org.opencustomer.webapp.module.system.management.role.PageStandardAction" 
+            name="system.management.role.pageStandardForm" 
+            scope="request"
+            input="/module/system/management/role/pageStandard.jsp"
+            roles="administration.role.READ">
+		<forward name="addUsergroup" path="/system/management/role/addUsergroup.do"/>
+    </action>
+    <action path="/system/management/role/pageRights" 
+            type="org.opencustomer.webapp.module.system.management.role.PageRightsAction" 
+            name="system.management.role.pageRightsForm" 
+            scope="request"
+            input="/module/system/management/role/pageRights.jsp"
+            roles="administration.role.READ">
+    </action>
+    <action path="/system/management/role/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="administration.role.READ,administration.role.WRITE">
+    </action>
+
+    <action path="/system/management/role/addUsergroup" 
+            type="org.opencustomer.webapp.module.system.management.role.add.AddUsergroupAction" 
+            name="generic.add.usergroup" 
+            scope="request"
+            input="/module/generic/add/addUsergroup.jsp"
+            roles="administration.role.WRITE">
+    </action>
+    
+  	<!-- ========== usergroup ========== -->
+    <action path="/system/management/usergroup" 
+            type="org.opencustomer.webapp.module.system.management.usergroup.ListAction" 
+            name="system.management.usergroup.listForm" 
+            scope="request"
+            input="/module/system/management/usergroup/list.jsp"
+            roles="administration.usergroup.READ,administration.usergroup.WRITE">
+    </action>
+    
+	<action path="/system/management/usergroup/edit" 
+            type="org.opencustomer.webapp.module.system.management.usergroup.LoadAction" 
+            name="system.management.usergroup.loadForm" 
+            scope="request"
+            roles="administration.usergroup.READ,administration.usergroup.WRITE">
+    </action>
+    <action path="/system/management/usergroup/save" 
+            type="org.opencustomer.webapp.module.system.management.usergroup.SaveAction"
+            roles="administration.usergroup.READ,administration.usergroup.WRITE">
+		<forward name="jumpUser" path="/system/management/user/edit.do"/>
+		<forward name="jumpRole" path="/system/management/role/edit.do"/>
+    </action>
+    <action path="/system/management/usergroup/delete" 
+            type="org.opencustomer.webapp.module.system.management.usergroup.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="administration.usergroup.WRITE">
+    </action>
+    <action path="/system/management/usergroup/pageStandard" 
+            type="org.opencustomer.webapp.module.system.management.usergroup.PageStandardAction" 
+            name="system.management.usergroup.pageStandardForm" 
+            scope="request"
+            input="/module/system/management/usergroup/pageStandard.jsp"
+            roles="administration.usergroup.READ,administration.usergroup.WRITE">
+    </action>
+    <action path="/system/management/usergroup/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="administration.usergroup.READ,administration.usergroup.WRITE">
+    </action>
+  	
+  	<!-- ========== configuration ========== -->
+	<action path="/system/settings/configuration/edit" 
+            type="org.opencustomer.webapp.module.system.settings.configuration.LoadAction" 
+            name="system.settings.configuration.loadForm" 
+            scope="request"
+            roles="administration.configuration.READ">
+    </action>
+    <action path="/system/settings/configuration/save" 
+            type="org.opencustomer.webapp.module.system.settings.configuration.SaveAction"
+            roles="administration.configuration.READ">
+    </action>
+    <action path="/system/settings/configuration/pageStandard" 
+            type="org.opencustomer.webapp.module.system.settings.configuration.PageStandardAction" 
+            name="system.settings.configuration.pageStandardForm" 
+            scope="request"
+            input="/module/system/settings/configuration/pageStandard.jsp"
+            roles="administration.configuration.READ">
+    </action>
+    <action path="/system/settings/configuration/pageLdap" 
+            type="org.opencustomer.webapp.module.system.settings.configuration.PageLdapAction" 
+            name="system.settings.configuration.pageLdapForm" 
+            scope="request"
+            input="/module/system/settings/configuration/pageLdap.jsp"
+            roles="administration.configuration.READ">
+    </action>
+           
+  	<!-- ========== list ========== -->
+    <action path="/system/settings/list/edit" 
+            type="org.opencustomer.webapp.module.system.settings.list.LoadAction" 
+            name="system.settings.list.loadForm" 
+            scope="request"
+            roles="administration.list.READ">
+    </action>
+    <action path="/system/settings/list/save" 
+            type="org.opencustomer.webapp.module.system.settings.list.SaveAction"
+            roles="administration.list.READ">
+    </action>
+    <action path="/system/settings/list/delete" 
+            type="org.opencustomer.webapp.module.system.settings.list.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="administration.list.WRITE">
+    </action>
+    <action path="/system/settings/list/pageStandard" 
+            type="org.opencustomer.webapp.module.system.settings.list.PageStandardAction" 
+            name="system.settings.list.pageStandardForm" 
+            scope="request"
+            input="/module/system/settings/list/pageStandard.jsp"
+            roles="administration.list.READ">
+    </action>
+    <action path="/system/settings/list/pageColumns" 
+            type="org.opencustomer.webapp.module.system.settings.list.PageColumnsAction" 
+            name="system.settings.list.pageColumnsForm" 
+            scope="request"
+            input="/module/system/settings/list/pageColumns.jsp"
+            roles="administration.list.READ">
+    </action>
+  </action-mappings>
+</struts-config>

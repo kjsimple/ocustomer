@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is the OpenCustomer CRM.
+   -
+   - The Initial Developer of the Original Code is
+   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Thomas Bader <thomas.bader@bader-jene.de>
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+  <!-- ========== Form Bean Definitions ================================== -->
+  <form-beans>
+    <form-bean name="common.logonForm" 
+               type="org.opencustomer.webapp.module.common.LogonForm"/>
+    <form-bean name="common.menuForm" 
+               type="org.opencustomer.webapp.module.common.MenuForm"/>
+  </form-beans>
+  
+  <!-- ========== Global Forward Definitions ============================= -->
+  <global-forwards>
+    <forward name="login" path="/login.do"/>
+    <forward name="error" path="/error.do"/>
+  </global-forwards>
+
+  <!-- ========== Action Mapping Definitions ============================= -->
+  <action-mappings>
+    <action path="/login" 
+            type="org.opencustomer.webapp.module.common.LogonAction" 
+            name="common.logonForm" 
+            scope="request"
+            input="/module/common/login.jsp">
+    </action>
+    <action path="/logout" 
+            type="org.opencustomer.webapp.module.common.LogoutAction"
+            scope="request">    
+      <forward name="logoutOk" path="/module/common/login.jsp"/>
+    </action>    
+    
+    <action path="/menu" 
+            type="org.opencustomer.webapp.module.common.MenuAction" 
+            name="common.menuForm" 
+            scope="request">
+    </action>
+
+    <action path="/error" 
+            type="org.opencustomer.webapp.module.common.ErrorAction"
+            scope="request"
+            input="/module/common/error.jsp">    
+    </action> 
+
+  </action-mappings>
+  
+    <controller processorClass="org.opencustomer.webapp.struts.RequestProcessor"/>
+		
+    <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="WebResources" null="false"/>
+  
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/struts-config/tiles-defs.xml"/>
+    </plug-in>
+
+</struts-config>

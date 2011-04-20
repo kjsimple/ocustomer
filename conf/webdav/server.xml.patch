@@ -1,0 +1,25 @@
+--- server.xml	2006-04-14 20:11:12.000000000 +0200
++++ server_oc.xml	2006-06-22 14:18:27.781250000 +0200
+@@ -191,6 +191,22 @@
+       <Host name="localhost" appBase="webapps"
+        unpackWARs="true" autoDeploy="true"
+        xmlValidation="false" xmlNamespaceAware="false">
++       
++       <Context path="/opencustomer" docBase="opencustomer"
++        debug="5" reloadable="true" crossContext="true">
++
++        <Realm className="org.apache.catalina.realm.JAASRealm"
++            appName="oc_login"
++            userClassNames="org.apache.slide.jaas.spi.SlidePrincipal"
++            roleClassNames="org.apache.slide.jaas.spi.SlideRole"
++            name="OpenCustomer DAV Server"
++            useContextClassLoader="false" />
++
++        <Resource name="jdbc/opencustomer" auth="Container" type="javax.sql.DataSource"
++            maxActive="50" maxIdle="10" maxWait="5000"
++            username="opencustomer" password="" driverClassName="org.gjt.mm.mysql.Driver"
++            url="jdbc:mysql://127.0.0.1:3306/opencustomer?useUnicode=true&amp;characterEncoding=UTF-8"/>
++    </Context>
+ 
+         <!-- Defines a cluster for this node,
+              By defining this element, means that every manager will be changed.

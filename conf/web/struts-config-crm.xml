@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is the OpenCustomer CRM.
+   -
+   - The Initial Developer of the Original Code is
+   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Thomas Bader <thomas.bader@bader-jene.de>
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+  <!-- ========== Form Bean Definitions ================================== -->
+  <form-beans>
+	<!-- ========== person ========== -->
+    <form-bean name="crm.person.loadForm" 
+               type="org.opencustomer.webapp.module.crm.person.LoadForm"/>
+    <form-bean name="crm.person.pageOverviewForm" 
+               type="org.opencustomer.webapp.module.crm.person.PageOverviewForm"/>
+    <form-bean name="crm.person.pageStandardForm" 
+               type="org.opencustomer.webapp.module.crm.person.PageStandardForm"/>
+    <form-bean name="crm.person.pageContactForm" 
+               type="org.opencustomer.webapp.module.crm.person.PageContactForm"/>
+    <form-bean name="crm.person.pageAddressForm" 
+               type="org.opencustomer.webapp.module.crm.person.PageAddressForm"/>
+    <form-bean name="crm.person.pageJobForm" 
+               type="org.opencustomer.webapp.module.crm.person.PageJobForm"/>
+ 
+	<!-- ========== company ========== -->
+    <form-bean name="crm.company.loadForm" 
+               type="org.opencustomer.webapp.module.crm.company.LoadForm"/>
+    <form-bean name="crm.company.pageOverviewForm" 
+               type="org.opencustomer.webapp.module.crm.company.PageOverviewForm"/>
+    <form-bean name="crm.company.pageStandardForm" 
+               type="org.opencustomer.webapp.module.crm.company.PageStandardForm"/>
+    <form-bean name="crm.company.pageInfoForm" 
+               type="org.opencustomer.webapp.module.crm.company.PageInfoForm"/>
+    <form-bean name="crm.company.pagePersonForm" 
+               type="org.opencustomer.webapp.module.crm.company.PagePersonForm"/>
+    <form-bean name="crm.company.pageContactForm" 
+               type="org.opencustomer.webapp.module.crm.company.PageContactForm"/>
+    <form-bean name="crm.company.pageAddressForm" 
+               type="org.opencustomer.webapp.module.crm.company.PageAddressForm"/>
+    <form-bean name="crm.company.pageJobForm" 
+               type="org.opencustomer.webapp.module.crm.company.PageJobForm"/>
+
+	<!-- ========== contact ========== -->
+    <form-bean name="crm.contact.loadForm" 
+               type="org.opencustomer.webapp.module.crm.contact.LoadForm"/>
+    <form-bean name="crm.contact.pageStandardForm" 
+               type="org.opencustomer.webapp.module.crm.contact.PageStandardForm"/>
+
+	<!-- ========== job ========== -->
+    <form-bean name="crm.job.loadForm" 
+               type="org.opencustomer.webapp.module.crm.job.LoadForm"/>
+    <form-bean name="crm.job.pageStandardForm" 
+               type="org.opencustomer.webapp.module.crm.job.PageStandardForm"/>
+
+  </form-beans>
+  
+  <!-- ========== Action Mapping Definitions ============================= -->
+  <action-mappings>
+
+	<!-- ========== persons ========== -->
+    <action path="/crm/person" 
+            type="org.opencustomer.webapp.module.crm.person.ListAction" 
+            name="generic.dynamicListForm" 
+            scope="request"
+            input="/module/crm/person/list.jsp"
+            roles="crm.persons.READ">
+		<forward name="listConfiguration" path="/system/settings/list/edit.do"/>
+    </action>
+
+    <action path="/crm/person/download" 
+            type="org.opencustomer.webapp.module.generic.DownloadListAction" 
+            roles="crm.persons.DOWNLOAD">
+    </action>
+
+    <action path="/crm/person/edit" 
+            type="org.opencustomer.webapp.module.crm.person.LoadAction" 
+            name="crm.person.loadForm" 
+            scope="request"
+            roles="crm.persons.READ">
+    </action>
+    <action path="/crm/person/save" 
+            type="org.opencustomer.webapp.module.crm.person.SaveAction"
+            roles="crm.persons.READ,crm.persons.WRITE">
+		<forward name="jumpCompany" path="/crm/company/edit.do"/>
+		<forward name="jumpPerson" path="/crm/person/edit.do"/>
+    </action>
+    <action path="/crm/person/delete" 
+            type="org.opencustomer.webapp.module.crm.person.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="crm.persons.WRITE">
+    </action>
+    <action path="/crm/person/pageOverview" 
+            type="org.opencustomer.webapp.module.crm.person.PageOverviewAction" 
+            name="crm.person.pageOverviewForm" 
+            scope="request"
+            input="/module/crm/person/pageOverview.jsp"
+            roles="crm.persons.READ">
+    </action>
+    <action path="/crm/person/pageStandard" 
+            type="org.opencustomer.webapp.module.crm.person.PageStandardAction" 
+            name="crm.person.pageStandardForm" 
+            scope="request"
+            input="/module/crm/person/pageStandard.jsp"
+            roles="crm.persons.READ">
+		<forward name="addCompany" path="/crm/person/addCompany.do"/>
+    </action>
+    <action path="/crm/person/pageContact" 
+            type="org.opencustomer.webapp.module.crm.person.PageContactAction" 
+            name="crm.person.pageContactForm" 
+            scope="request"
+            input="/module/crm/person/pageContact.jsp"
+            roles="crm.contacts.READ">
+    </action>
+    <action path="/crm/person/pageJob" 
+            type="org.opencustomer.webapp.module.crm.person.PageJobAction" 
+            name="crm.person.pageJobForm" 
+            scope="request"
+            input="/module/generic/pageJob.jsp"
+            roles="crm.jobs.READ">
+    </action>
+    <action path="/crm/person/pageAddress" 
+            type="org.opencustomer.webapp.module.crm.person.PageAddressAction" 
+            name="crm.person.pageAddressForm" 
+            scope="request"
+            input="/module/crm/person/pageAddress.jsp"
+            roles="crm.persons.READ">
+    </action>
+    <action path="/crm/person/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="crm.persons.READ">
+    </action>
+    
+    <action path="/crm/person/addCompany" 
+            type="org.opencustomer.webapp.module.crm.person.add.AddCompanyAction" 
+            name="generic.add.company" 
+            scope="request"
+            input="/module/generic/add/addCompany.jsp"
+            roles="crm.persons.WRITE">
+    </action>
+
+	<!-- ========== Firma ========== -->
+    <action path="/crm/company" 
+            type="org.opencustomer.webapp.module.crm.company.ListAction" 
+            name="generic.dynamicListForm" 
+            scope="request"
+            input="/module/crm/company/list.jsp"
+            roles="crm.companies.READ">
+		<forward name="listConfiguration" path="/system/settings/list/edit.do"/>            
+    </action>
+
+    <action path="/crm/company/download" 
+            type="org.opencustomer.webapp.module.generic.DownloadListAction" 
+            roles="crm.companies.DOWNLOAD">
+    </action>
+    
+    <action path="/crm/company/edit" 
+            type="org.opencustomer.webapp.module.crm.company.LoadAction" 
+            name="crm.company.loadForm" 
+            scope="request"
+            roles="crm.companies.READ">
+    </action>
+    <action path="/crm/company/save" 
+            type="org.opencustomer.webapp.module.crm.company.SaveAction"
+            roles="crm.companies.READ,crm.companies.WRITE">
+		<forward name="jumpPerson" path="/crm/person/edit.do"/>
+		<forward name="jumpCompany" path="/crm/company/edit.do"/>
+    </action>
+    <action path="/crm/company/delete" 
+            type="org.opencustomer.webapp.module.crm.company.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="crm.companies.WRITE">
+    </action>
+    <action path="/crm/company/pageOverview" 
+            type="org.opencustomer.webapp.module.crm.company.PageOverviewAction" 
+            name="crm.company.pageOverviewForm" 
+            scope="request"
+            input="/module/crm/company/pageOverview.jsp"
+            roles="crm.companies.READ">
+    </action>
+    <action path="/crm/company/pageStandard" 
+            type="org.opencustomer.webapp.module.crm.company.PageStandardAction" 
+            name="crm.company.pageStandardForm" 
+            scope="request"
+            input="/module/crm/company/pageStandard.jsp"
+            roles="crm.companies.READ">
+		<forward name="addUser" path="/crm/company/addUser.do"/>
+    </action>
+    <action path="/crm/company/pageInfo" 
+            type="org.opencustomer.webapp.module.crm.company.PageInfoAction" 
+            name="crm.company.pageInfoForm" 
+            scope="request"
+            input="/module/crm/company/pageInfo.jsp"
+            roles="crm.companies.READ">
+    </action>
+    <action path="/crm/company/pagePerson" 
+            type="org.opencustomer.webapp.module.crm.company.PagePersonAction" 
+            name="crm.company.pagePersonForm" 
+            scope="request"
+            input="/module/crm/company/pagePerson.jsp"
+            roles="crm.companies.READ">
+    </action>
+    <action path="/crm/company/pageContact" 
+            type="org.opencustomer.webapp.module.crm.company.PageContactAction" 
+            name="crm.company.pageContactForm" 
+            scope="request"
+            input="/module/crm/company/pageContact.jsp"
+            roles="crm.contacts.READ">
+    </action>
+    <action path="/crm/company/pageAddress" 
+            type="org.opencustomer.webapp.module.crm.company.PageAddressAction" 
+            name="crm.company.pageAddressForm" 
+            scope="request"
+            input="/module/crm/company/pageAddress.jsp"
+            roles="crm.companies.READ">
+    </action>
+    <action path="/crm/company/pageJob" 
+            type="org.opencustomer.webapp.module.crm.company.PageJobAction" 
+            name="crm.company.pageJobForm" 
+            scope="request"
+            input="/module/generic/pageJob.jsp"
+            roles="crm.jobs.READ">
+    </action>
+    <action path="/crm/company/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="crm.companies.READ">
+    </action>
+    <action path="/crm/company/addUser" 
+            type="org.opencustomer.webapp.module.crm.company.add.AddUserAction" 
+            name="generic.add.user" 
+            scope="request"
+            input="/module/generic/add/addUser.jsp"
+            roles="crm.companies.WRITE">
+    </action>
+        
+   	<!-- ========== Kontakte ========== -->
+    <action path="/crm/contact/edit" 
+            type="org.opencustomer.webapp.module.crm.contact.LoadAction" 
+            name="crm.contact.loadForm" 
+            scope="request"
+            roles="crm.contacts.READ">
+    </action>
+    <action path="/crm/contact/save" 
+            type="org.opencustomer.webapp.module.crm.contact.SaveAction"
+            roles="crm.contacts.READ">
+    </action>
+    <action path="/crm/contact/delete" 
+            type="org.opencustomer.webapp.module.crm.contact.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="crm.contacts.WRITE">
+    </action>
+    <action path="/crm/contact/pageStandard" 
+            type="org.opencustomer.webapp.module.crm.contact.PageStandardAction" 
+            name="crm.contact.pageStandardForm" 
+            scope="request"
+            input="/module/crm/contact/pageStandard.jsp"
+            roles="crm.contacts.READ">
+		<forward name="addPerson" path="/crm/contact/addPerson.do"/>
+		<forward name="addCompany" path="/crm/contact/addCompany.do"/>
+    </action>
+    <action path="/crm/contact/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="crm.contacts.READ">
+    </action>
+
+    <action path="/crm/contact/addPerson" 
+            type="org.opencustomer.webapp.module.crm.contact.add.AddPersonAction" 
+            name="generic.add.person" 
+            scope="request"
+            input="/module/generic/add/addPerson.jsp"
+            roles="crm.contacts.WRITE">
+    </action>
+    <action path="/crm/contact/addCompany" 
+            type="org.opencustomer.webapp.module.crm.contact.add.AddCompanyAction" 
+            name="generic.add.company" 
+            scope="request"
+            input="/module/generic/add/addCompany.jsp"
+            roles="crm.contacts.WRITE">
+    </action>
+  	
+        
+   	<!-- ========== Jobs ========== -->
+    <action path="/crm/job/edit" 
+            type="org.opencustomer.webapp.module.crm.job.LoadAction" 
+            name="crm.job.loadForm" 
+            scope="request"
+            roles="crm.jobs.READ">
+    </action>
+    <action path="/crm/job/save" 
+            type="org.opencustomer.webapp.module.crm.job.SaveAction"
+            roles="crm.jobs.READ">
+    </action>
+    <action path="/crm/job/delete" 
+            type="org.opencustomer.webapp.module.crm.job.DeleteAction" 
+            name="generic.deleteForm" 
+            scope="request"
+            input="/module/generic/delete.jsp"
+            roles="crm.jobs.WRITE">
+    </action>
+    <action path="/crm/job/pageStandard" 
+            type="org.opencustomer.webapp.module.crm.job.PageStandardAction" 
+            name="crm.job.pageStandardForm" 
+            scope="request"
+            input="/module/crm/job/pageStandard.jsp"
+            roles="crm.jobs.READ">
+		<forward name="addPerson" path="/crm/job/addPerson.do"/>
+		<forward name="addCompany" path="/crm/job/addCompany.do"/>
+		<forward name="addUser" path="/crm/job/addUser.do"/>
+    </action>
+    <action path="/crm/job/pageSystem" 
+            type="org.opencustomer.webapp.module.generic.PageSystemAction" 
+            name="generic.pageSystemForm" 
+            scope="request"
+            input="/module/generic/pageSystem.jsp"
+            roles="crm.jobs.READ">
+    </action>
+
+    <action path="/crm/job/addPerson" 
+            type="org.opencustomer.webapp.module.crm.job.add.AddPersonAction" 
+            name="generic.add.person" 
+            scope="request"
+            input="/module/generic/add/addPerson.jsp"
+            roles="crm.jobs.WRITE">
+    </action>
+    <action path="/crm/job/addCompany" 
+            type="org.opencustomer.webapp.module.crm.job.add.AddCompanyAction" 
+            name="generic.add.company" 
+            scope="request"
+            input="/module/generic/add/addCompany.jsp"
+            roles="crm.jobs.WRITE">
+    </action>
+    <action path="/crm/job/addUser" 
+            type="org.opencustomer.webapp.module.crm.job.add.AddUserAction" 
+            name="generic.add.user" 
+            scope="request"
+            input="/module/generic/add/addUser.jsp"
+            roles="crm.jobs.ASSIGN_USER">
+    </action>
+
+  </action-mappings>
+
+</struts-config>
