@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -202,7 +202,7 @@
 										if(user.getProfile().getUsergroups().size() > 1) { %>
 										<panel:editable condition="true">
 										<logic:equal name="panel_isLdapUser" scope="page" value="false">
-										<html:image property="<%="doRemoveUsergroup_"+TagUtility.lookupString(pageContext, "data", "id", "page")%>" pageKey="image.icon.delete.url" titleKey="image.icon.delete.text" altKey="image.icon.delete.text"/>
+										<html:image property='<%="doRemoveUsergroup_"+TagUtility.lookupString(pageContext, "data", "id", "page")%>' pageKey="image.icon.delete.url" titleKey="image.icon.delete.text" altKey="image.icon.delete.text"/>
 										</logic:equal>
 										<logic:equal name="panel_isLdapUser" scope="page" value="true">
 										<html:img pageKey="image.icon.delete_grey.url" titleKey="image.icon.delete_grey.text" altKey="image.icon.delete_grey.text"/>
@@ -215,9 +215,9 @@
 										<html:img pageKey="image.icon.delete_grey.url" titleKey="image.icon.delete_grey.text" altKey="image.icon.delete_grey.text"/><%
 										} %>
 										</oc:authenticate>
-										<oc:authenticate right="<%=Right.ADMINISTRATION_USERGROUP_WRITE.getLabel()+","+Right.ADMINISTRATION_USERGROUP_READ.getLabel()%>">
+										<oc:authenticate right='<%=Right.ADMINISTRATION_USERGROUP_WRITE.getLabel()+","+Right.ADMINISTRATION_USERGROUP_READ.getLabel()%>'>
 										<oc:entityAccess name="data" scope="page" access="<%=EntityAccess.Access.READ %>">
-										<panel:image property="<%="doJumpUsergroup_"+TagUtility.lookupString(pageContext, "data", "id", "page")%>" pageKey="image.icon.jump.url" titleKey="image.icon.jump.text" altKey="image.icon.jump.text" enable="true"/>
+										<panel:image property='<%="doJumpUsergroup_"+TagUtility.lookupString(pageContext, "data", "id", "page")%>' pageKey="image.icon.jump.url" titleKey="image.icon.jump.text" altKey="image.icon.jump.text" enable="true"/>
 										</oc:entityAccess>
 										<oc:notEntityAccess name="data" scope="page" access="<%=EntityAccess.Access.READ %>">
 										<html:img pageKey="image.icon.jump_grey.url" titleKey="image.icon.jump_grey.text" altKey="image.icon.jump_grey.text"/>
