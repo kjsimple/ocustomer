@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -116,7 +116,7 @@
 							<%-- inactive jump --%>
 							<logic:notPresent name="panel_job" property="referencedPerson" scope="page">
 							<logic:notPresent name="panel_job" property="referencedCompany" scope="page">
-							<oc:authenticate right="<%=Right.CRM_COMPANIES_READ.getLabel()+","+Right.CRM_PERSONS_READ.getLabel()%>">
+							<oc:authenticate right='<%=Right.CRM_COMPANIES_READ.getLabel()+","+Right.CRM_PERSONS_READ.getLabel()%>'>
 							<html:img pageKey="image.icon.jump_grey.url" titleKey="image.icon.jump_grey.text" altKey="image.icon.jump_grey.text"/>
 							</oc:authenticate>
 							</logic:notPresent>

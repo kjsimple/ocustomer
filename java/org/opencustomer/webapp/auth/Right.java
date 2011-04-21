@@ -87,7 +87,12 @@ public enum Right {
         String s = label.replaceAll("\\.", "_").toUpperCase();
         if ("ADMINISTRATION_USERMANAGEMENT_SESSION_MONITOR".equals(s)) {
             s = "ADMINISTRATION_USERMANAGEMENT_SESSIONMONITOR";
+        } else if ("CRM_JOBS_ASSIGN_USER".equals(s)) {
+            s = "CRM_JOBS_ASSIGNUSER";
+        } else if ("ADMINISTRATION_LIST_GLOBAL_LIST".equals(s)) {
+            s = "ADMINISTRATION_LIST_GLOBALLIST";
         }
+
         return Right.valueOf(s);
     /*
         Right right = rights.get(label);

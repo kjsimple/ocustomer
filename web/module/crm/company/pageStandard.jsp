@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -110,10 +110,10 @@
 							<html:option value="0"><bean:message key="default.select.none"/></html:option>
 							<logic:iterate id="data" name="panel_companyStates" scope="page">
 								<logic:present name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:message name="data" property="nameKey" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:message name="data" property="nameKey" scope="page"/></html:option>
 								</logic:present>
 								<logic:notPresent name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="name" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="name" scope="page"/></html:option>
 								</logic:notPresent>
 							</logic:iterate>
 						</html:select>
@@ -126,10 +126,10 @@
 							<html:option value="0"><bean:message key="default.select.none"/></html:option>
 							<logic:iterate id="data" name="panel_categories" scope="page">
 								<logic:present name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:message name="data" property="nameKey" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:message name="data" property="nameKey" scope="page"/></html:option>
 								</logic:present>
 								<logic:notPresent name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="name" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="name" scope="page"/></html:option>
 								</logic:notPresent>
 							</logic:iterate>
 						</html:select>
@@ -142,10 +142,10 @@
 							<html:option value="0"><bean:message key="default.select.none"/></html:option>
 							<logic:iterate id="data" name="panel_ratings" scope="page">
 								<logic:present name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="rating" scope="page"/> - <bean:message name="data" property="nameKey" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="rating" scope="page"/> - <bean:message name="data" property="nameKey" scope="page"/></html:option>
 								</logic:present>
 								<logic:notPresent name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="rating" scope="page"/> - <bean:write name="data" property="name" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="rating" scope="page"/> - <bean:write name="data" property="name" scope="page"/></html:option>
 								</logic:notPresent>
 							</logic:iterate>
 						</html:select>
@@ -163,10 +163,10 @@
 							<html:option value="0"><bean:message key="default.select.none"/></html:option>
 							<logic:iterate id="data" name="panel_companyTypes" scope="page">
 								<logic:present name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:message name="data" property="nameKey" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:message name="data" property="nameKey" scope="page"/></html:option>
 								</logic:present>
 								<logic:notPresent name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="name" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="name" scope="page"/></html:option>
 								</logic:notPresent>
 							</logic:iterate>
 						</html:select>
@@ -179,10 +179,10 @@
 							<html:option value="0"><bean:message key="default.select.none"/></html:option>
 							<logic:iterate id="data" name="panel_sectors" scope="page">
 								<logic:present name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:message name="data" property="nameKey" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:message name="data" property="nameKey" scope="page"/></html:option>
 								</logic:present>
 								<logic:notPresent name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="name" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="name" scope="page"/></html:option>
 								</logic:notPresent>
 							</logic:iterate>
 						</html:select>
@@ -195,18 +195,18 @@
 							<html:option value="0"><bean:message key="default.select.none"/></html:option>
 							<logic:iterate id="legalFormGroup" name="panel_legalFormGroups" scope="page">
 							<logic:present name="legalFormGroup" property="nameKey" scope="page">
-							<optgroup label="<bean:message name="legalFormGroup" property="nameKey" scope="page"/>">
+							<optgroup label='<bean:message name="legalFormGroup" property="nameKey" scope="page"/>'>
 							</logic:present>
 							<logic:notPresent name="legalFormGroup" property="nameKey" scope="page">
-							<optgroup label="<bean:write name="legalFormGroup" property="name" scope="page"/>">
+							<optgroup label='<bean:write name="legalFormGroup" property="name" scope="page"/>'>
 							</logic:notPresent>
 							<bean:define id="legalForms" name="legalFormGroup" property="legalForms" scope="page"/>
 							<logic:iterate id="data" name="legalForms" scope="page">
 								<logic:present name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:message name="data" property="nameKey" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:message name="data" property="nameKey" scope="page"/></html:option>
 								</logic:present>
 								<logic:notPresent name="data" property="nameKey" scope="page">
-								<html:option value="<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>"><bean:write name="data" property="name" scope="page"/></html:option>
+								<html:option value='<%=TagUtility.lookupString(pageContext, "data", "id", "page")%>'><bean:write name="data" property="name" scope="page"/></html:option>
 								</logic:notPresent>
 							</logic:iterate>
 							</optgroup>

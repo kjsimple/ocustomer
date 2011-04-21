@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -55,11 +55,11 @@
 			<logic:iterate id="data2" name="data" property="properties" scope="page">
 			<tr onmouseover="this.className='highlight';" onmouseout="this.className=''">
 				<td class="sub">
-					<common:label property="<%="position["+TagUtility.lookup(pageContext, "data2", "position", "page")+"]" %>" errorStyleId="error">
+					<common:label property='<%="position["+TagUtility.lookup(pageContext, "data2", "position", "page")+"]" %>' errorStyleId="error">
 					<bean:message name="data2" property="messageKey" scope="page"/>
 					</common:label>
 				</td>
-				<td><html:text property="<%="position["+TagUtility.lookup(pageContext, "data2", "position", "page")+"]" %>" styleId="<%="position["+TagUtility.lookup(pageContext, "data2", "position", "page")+"]" %>" style="width: 50px; text-align: center;"/></td>
+				<td><html:text property='<%="position["+TagUtility.lookup(pageContext, "data2", "position", "page")+"]" %>' styleId='<%="position["+TagUtility.lookup(pageContext, "data2", "position", "page")+"]" %>' style="width: 50px; text-align: center;"/></td>
 			</tr>
 			</logic:iterate>
 		</logic:iterate>

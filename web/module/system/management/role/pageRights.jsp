@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -81,14 +81,14 @@
 					<td>
 						<logic:iterate id="right" name="group" property="rights" scope="page">
 						<logic:equal name="right" property="type" scope="page" value="<%=RightVO.Type.READ.toString()%>">
-						<html:multibox property="rights" value="<%=TagUtility.lookupString(pageContext, "right", "id", "page", true)%>" styleId="<%="read_"+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)%>" onchange="<%="checkRead("+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)+")"%>"/>
+						<html:multibox property="rights" value='<%=TagUtility.lookupString(pageContext, "right", "id", "page", true)%>' styleId='<%="read_"+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)%>' onchange='<%="checkRead("+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)+")"%>'/>
 						</logic:equal>
 						</logic:iterate>
 					</td>
 					<td>
 						<logic:iterate id="right" name="group" property="rights" scope="page">
-						<logic:equal name="right" property="type" scope="page" value="<%=RightVO.Type.WRITE.toString()%>">
-						<html:multibox property="rights" value="<%=TagUtility.lookupString(pageContext, "right", "id", "page", true)%>" styleId="<%="write_"+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)%>" onchange="<%="checkWrite("+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)+")"%>"/>
+						<logic:equal name="right" property="type" scope="page" value='<%=RightVO.Type.WRITE.toString()%>'>
+						<html:multibox property="rights" value='<%=TagUtility.lookupString(pageContext, "right", "id", "page", true)%>' styleId='<%="write_"+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)%>' onchange='<%="checkWrite("+TagUtility.lookupString(pageContext, "right", "rightGroup.id", "page", true)+")"%>'/>
 						</logic:equal>
 						</logic:iterate>
 					</td>
@@ -98,7 +98,7 @@
 						<table>
 							<tr>
 								<td style="width: 20px;">
-									<html:multibox property="rights" value="<%=TagUtility.lookupString(pageContext, "right", "id", "page", true)%>"/>
+									<html:multibox property="rights" value='<%=TagUtility.lookupString(pageContext, "right", "id", "page", true)%>'/>
 								</td>
 								<td>
 									<bean:message name="right" property="namekey" scope="page"/>

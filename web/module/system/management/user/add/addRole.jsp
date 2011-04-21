@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2006
    - the Initial Developer. All Rights Reserved.
    -
@@ -43,7 +43,7 @@
 		
 	<html:errors/>
 	
-	<html:form action="<%=(String)pageContext.getAttribute("panel_path")%>" styleClass="list" style="width: 500px;">
+	<html:form action='<%=(String)pageContext.getAttribute("panel_path")%>' styleClass="list" style="width: 500px;">
 		<fieldset class="search">
 			<legend><bean:message key="default.block.search"/></legend>
 			<table class="search">

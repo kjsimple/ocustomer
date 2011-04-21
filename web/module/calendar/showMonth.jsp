@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -121,7 +121,7 @@
 				<div class="day">
 					<div id="onDay_<bean:write name="data" property="startDate" scope="page" formatKey="default.format.date.date"/>" style="display: none">
 					<oc:entityAccess name="panel_calendar" scope="page" access="<%=EntityAccess.Access.WRITE%>">
-					<html:link action="<%="/calendar/event/edit?date="+new SimpleDateFormat("yyyyMMdd").format((Date)TagUtility.lookup(pageContext, "data", "startDate", "page")) %>" titleKey="image.icon.add.text">
+					<html:link action='<%="/calendar/event/edit?date="+new SimpleDateFormat("yyyyMMdd").format((Date)TagUtility.lookup(pageContext, "data", "startDate", "page")) %>' titleKey="image.icon.add.text">
 						+ 
 					</html:link>
 					</oc:entityAccess>

@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2005
    - the Initial Developer. All Rights Reserved.
    -
@@ -111,13 +111,13 @@
 			<table class="result">
 				<colgroup>
 					<col width="1*"/>
-					<oc:authenticate right="<%=Right.ADMINISTRATION_USERMANAGEMENT_READ.getLabel()+","+Right.ADMINISTRATION_USERMANAGEMENT_WRITE.getLabel()%>">
+					<oc:authenticate right='<%=Right.ADMINISTRATION_USERMANAGEMENT_READ.getLabel()+","+Right.ADMINISTRATION_USERMANAGEMENT_WRITE.getLabel()%>'>
 					<col width="25"/>
 					</oc:authenticate>
 				</colgroup>
 				<tr>
 					<th><bean:message key="entity.system.user"/></th>
-					<oc:authenticate right="<%=Right.ADMINISTRATION_USERMANAGEMENT_READ.getLabel()+","+Right.ADMINISTRATION_USERMANAGEMENT_WRITE.getLabel()%>">
+					<oc:authenticate right='<%=Right.ADMINISTRATION_USERMANAGEMENT_READ.getLabel()+","+Right.ADMINISTRATION_USERMANAGEMENT_WRITE.getLabel()%>'>
 					<th>&nbsp;</th>
 					</oc:authenticate>
 				</tr>
@@ -127,10 +127,10 @@
 				%>
 				<tr class="<common:rowSwap name="index" number="3" odd="rowOdd" even="rowEven"/>">
 					<td><bean:write name="data" property="userName" scope="page"/></td>
-					<oc:authenticate right="<%=Right.ADMINISTRATION_USERMANAGEMENT_READ.getLabel()+","+Right.ADMINISTRATION_USERMANAGEMENT_WRITE.getLabel()%>">
+					<oc:authenticate right='<%=Right.ADMINISTRATION_USERMANAGEMENT_READ.getLabel()+","+Right.ADMINISTRATION_USERMANAGEMENT_WRITE.getLabel()%>'>
 					<td>
 						<oc:entityAccess name="data" scope="page" access="<%=EntityAccess.Access.READ %>">
-						<panel:image property="<%="doJumpUser_"+userVO.getId()%>" pageKey="image.icon.jump.url" titleKey="image.icon.jump.text" altKey="image.icon.jump.text" enable="true"/>
+						<panel:image property='<%="doJumpUser_"+userVO.getId()%>' pageKey="image.icon.jump.url" titleKey="image.icon.jump.text" altKey="image.icon.jump.text" enable="true"/>
 						</oc:entityAccess>
 						<oc:notEntityAccess name="data" scope="page" access="<%=EntityAccess.Access.READ %>">
 						<html:img pageKey="image.icon.jump_grey.url" titleKey="image.icon.jump_grey.text" altKey="image.icon.jump_grey.text"/>

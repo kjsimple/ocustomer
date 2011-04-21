@@ -14,7 +14,7 @@
    - The Original Code is the OpenCustomer CRM.
    -
    - The Initial Developer of the Original Code is
-   - Thomas Bader (Bader & Jene Software-Ingenieurbüro).
+   - Thomas Bader (Bader & Jene Software-Ingenieurbï¿½ro).
    - Portions created by the Initial Developer are Copyright (C) 2006
    - the Initial Developer. All Rights Reserved.
    -
@@ -187,7 +187,7 @@
 						    additionalClass += " jobLow";
 						}
 					%>
-					<tr class="<common:rowSwap name="index" number="3" odd="<%="rowOdd"+additionalClass%>" even="<%="rowEven"+additionalClass%>"/>" onmouseover="this.className='rowActive<%=additionalClass%>';" onmouseout="this.className='<common:rowSwap name="index" number="3" odd="<%="rowOdd"+additionalClass%>" even="<%="rowEven"+additionalClass%>"/>'">
+					<tr class="<common:rowSwap name="index" number="3" odd='<%="rowOdd"+additionalClass%>' even='<%="rowEven"+additionalClass%>'/>" onmouseover="this.className='rowActive<%=additionalClass%>';" onmouseout="this.className='<common:rowSwap name="index" number="3" odd='<%="rowOdd"+additionalClass%>' even='<%="rowEven"+additionalClass%>'/>'">
 						<td onclick="edit(<bean:write name="data" property="jobId" scope="page"/>);">
 							<bean:write name="data" property="dueDate" scope="page" formatKey="default.format.date.datetime"/>
 						</td>
